@@ -114,6 +114,7 @@ export default class Data {
             });
         } else {
             throw new Error();
+          
         }
       
   }
