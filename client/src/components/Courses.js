@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 //     }
 // }
 
-function Courses () {
+export function Courses () {
     const [courses, setCourses] = useState([]);
     useEffect(() => {
         
