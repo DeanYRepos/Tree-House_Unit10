@@ -16,21 +16,25 @@ import  { Context } from '../Context';
 
     }, [courses, getCourses]);
 
-    const courseList = context.getCourses().map(course => {
+    const courseList = context.getCourses().map(course => { //data?
         return(
-        <>
+        
        
-           <Link className="course--module course--link" href={`/courses/${course.id}`} />
-           <h2 class="course--label">Courses</h2>
-           <h3 class="course--title">{course.title}</h3>
-          
-       </>
+           <Link className="course--module course--link" href={`/courses/${course.id}`} >
+           <h2 className="course--label">Courses</h2>
+           <h3 className="course--title">{course.title}</h3>
+           </Link>
+      
     )});
       
     return(
       
-        <div class="wrap main--grid">
+        <div className="wrap main--grid">
         {courseList}
+        {/* <Link className="course--module course--add--module" href={`/courses/${course.id}`}>
+
+
+        </Link> */}
 
         </div>
      
