@@ -1,22 +1,23 @@
 import React, {  useState, useEffect, useContext } from 'react'; //don't forget to replace Component into curly braces if useState doesn't work out
 import { Link } from 'react-router-dom';
-import  { Context } from '../Context';
+import  { CoursesContext }  from '../Context';
 
 
 
 
   const Courses = () => {
-    const { context }  = useContext(Context);
+    const { coursesContext  } = useContext(CoursesContext);
     const [courses, setCourses] = useState([]);
-   const getCourses = context.getCourses()
+    const getCourses = coursesContext.data.getCourses()
     useEffect(() => {
+        console.log(coursesContext);
         getCourses
         .then(courses => setCourses({courses}))
         .catch(err => err.history.push('./error') );
 
-    }, [courses, getCourses]);
+    }, [courses, getCourses,coursesContext]);
 
-    const courseList = context.getCourses().map(course => { //data?
+    const courseList = getCourses.map(course => { 
         return(
         
        
