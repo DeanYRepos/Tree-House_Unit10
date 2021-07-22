@@ -6,9 +6,13 @@ import  { CoursesContext }  from '../Context';
 
 
   const Courses = () => {
-    const { coursesContext  } = useContext(CoursesContext);
+    const  coursesContext = useContext(CoursesContext);
+    
     const [courses, setCourses] = useState([]);
+    
     const getCourses = coursesContext.data.getCourses()
+    console.log(getCourses);
+   
     useEffect(() => {
         console.log(coursesContext);
         getCourses
@@ -27,7 +31,7 @@ import  { CoursesContext }  from '../Context';
            </Link>
       
     )});
-      
+    
     return(
       
         <div className="wrap main--grid">
