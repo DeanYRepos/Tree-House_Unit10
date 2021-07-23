@@ -10,18 +10,19 @@ import  { CoursesContext }  from '../Context';
     
     const [courses, setCourses] = useState([]);
     
-    const getCourses = coursesContext.data.getCourses()
-    console.log(getCourses);
+     
+    //console.log(getCourses);
    
     useEffect(() => {
-        console.log(coursesContext);
-        getCourses
-        .then(courses => setCourses({courses}))
+        
+        coursesContext.data.getCourses()
+        .then(courses =>
+        setCourses(courses))
         .catch(err => err.history.push('./error') );
 
-    }, [courses, getCourses,coursesContext]);
+    }, [courses, coursesContext]);
 
-    const courseList = getCourses.map(course => { 
+    const courseList = courses.map(course => { 
         return(
         
        
@@ -36,10 +37,7 @@ import  { CoursesContext }  from '../Context';
       
         <div className="wrap main--grid">
         {courseList}
-        {/* <Link className="course--module course--add--module" href={`/courses/${course.id}`}>
-
-
-        </Link> */}
+      
 
         </div>
      
