@@ -2,9 +2,15 @@
 
 import React, { Component } from 'react';
 import Data from './Data';
+import Cookies from 'js-cookie';
 
- export const CoursesContext = React.createContext();
+export const CoursesContext = React.createContext();
+
 export class Provider extends Component{
+
+    // state= {
+    //     authenticatedUser: Cookies.getJSON('authenticatedUser') || null
+    // };
 
     constructor(){
         super();
