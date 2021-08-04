@@ -1,12 +1,13 @@
 import React, {  useState, useEffect, useContext } from 'react'; //don't forget to replace Component into curly braces if useState doesn't work out
 import { Link } from 'react-router-dom';
-import  { CoursesContext }  from '../Context';
+import  { Context }  from '../Context';
+import Header from './Header';
 
 
 
 
   const Courses = () => {
-    const  coursesContext = useContext(CoursesContext);
+    const  context = useContext(Context);
     
     const [courses, setCourses] = useState([]);
     
@@ -15,12 +16,12 @@ import  { CoursesContext }  from '../Context';
    
     useEffect(() => {
         
-        coursesContext.data.getCourses()
+        context.data.getCourses()
         .then(courses =>
         setCourses(courses))
         .catch(err => err.history.push('./error') );
 
-    }, [courses, coursesContext]);
+    }, [courses, context]);
 
     const courseList = courses.map(course => { 
         return(
@@ -34,21 +35,7 @@ import  { CoursesContext }  from '../Context';
     
     return(
         <div id="root">
-            <header>
-       
-        
-       
-            <div className="wrap header--flex">
-            <h1 className="header--logo"><a href="/">Courses</a></h1>
-            <nav>
-                <ul className="header--signedout">
-                <li><a href="sign-up.html">Sign Up</a></li>
-                <li><a href="sign-in.html">Sign In</a></li>
-                </ul>
-            </nav>
-           
-        </div>
-            </header>
+         <Header/>
          <main>
              <div className="wrap main--grid">
                 {courseList}

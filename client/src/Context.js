@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import Data from './Data';
 import Cookies from 'js-cookie';
 
-export const CoursesContext = React.createContext();
+export const Context = React.createContext();
 
 export class Provider extends Component{
 
@@ -23,13 +23,13 @@ export class Provider extends Component{
     }
         
     return(
-        <CoursesContext.Provider value={value}>
+        <Context.Provider value={value}>
         {this.props.children}
-        </CoursesContext.Provider>
+        </Context.Provider>
     );
     }
 }
-        export const Consumer = CoursesContext.Consumer;
+        export const Consumer = Context.Consumer;
         /**
  * A higher-order component that wraps the provided component in a Context Consumer component.
  * @param {class} Component - A React component.
@@ -38,9 +38,9 @@ export class Provider extends Component{
     export default function withContext(Component) {
         return function ContextComponent(props) {
             return(
-                <CoursesContext.Consumer>
+                <Context.Consumer>
                     {context => <Component {...props} context={context} />}
-                </CoursesContext.Consumer>
+                </Context.Consumer>
                );
             }
         }
