@@ -1,8 +1,9 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import  { Context }  from '../Context';
 
 const Header = () => {
-  //  const { context } = useContext(Context);
+    const { context } = useContext(Context);
     return(
         <header>
 

@@ -20,13 +20,14 @@ const Form = (props) => {
         cancel();
       }
     return (
-        <form>
-        <label htmlFor="emailAddress">Email Address</label>
-        <input id="emailAddress" name="emailAddress" type="email" defaultValue />
-        <label htmlFor="password">Password</label>
-        <input id="password" name="password" type="password" defaultValue />
-        <button className="button" type="submit">Sign In</button><button className="button button-secondary" onclick="event.preventDefault(); location.href='index.html';">Cancel</button>
-      </form>
+     <div>
+        <ErrorsDisplay errors={errors}/>
+        <form onSubmit= {handleSubmit}> 
+         { elements() }
+            <button className="button" type="submit">{submitButtonText}</button>
+            <button className="button button-secondary" onclick={handleCancel}>Cancel</button>
+         </form>
+      </div>
     );
 
     function ErrorsDisplay({ errors }) {
@@ -48,3 +49,4 @@ const Form = (props) => {
         return errorsDisplay;
   }
 }
+export default Form;
