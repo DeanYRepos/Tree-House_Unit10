@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Form = (props) => {
 
@@ -22,10 +23,11 @@ const Form = (props) => {
     return (
      <div>
         <ErrorsDisplay errors={errors}/>
-        <form onSubmit= {handleSubmit}> 
-         { elements() }
+        <form onSubmit={handleSubmit}> 
+         {elements()}
             <button className="button" type="submit">{submitButtonText}</button>
             <button className="button button-secondary" onclick={handleCancel}>Cancel</button>
+            <p>Don't have a user account? Click here to <Link to="/signup">sign up</Link>!</p>
          </form>
       </div>
     );
