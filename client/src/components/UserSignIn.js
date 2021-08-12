@@ -7,7 +7,7 @@ import  { Context }  from '../Context';
 const UserSignIn = () => {
     const context = useContext(Context);
     
-    const [emailAddress, setEmailAdress] = useState("");
+    const [emailAddress, setEmailAddress] = useState("");
     const[password, setPassword] = useState("");
     const [errors, setErrors] = useState([]);
 

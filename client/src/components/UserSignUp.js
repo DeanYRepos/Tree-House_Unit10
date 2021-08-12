@@ -1,10 +1,12 @@
 import React, { useState, useContext } from 'react';
 import Header from './Header';
 import Form from './Form';
+import  { Context }  from '../Context';
 
 
 const UserSignUp = ()=> {
 
+    const context = useContext(Context)
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [emailAddress, setEmailAddress] = useState("");
@@ -12,6 +14,43 @@ const UserSignUp = ()=> {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [errors, setErrors] = useState([]);
 
+    const submit = () =>{
+       
+        const {
+            firstName,
+            lastName,
+            emailAddress,
+            password,
+            confirmPassword
+        } = [setFirstName(firstName), 
+            setLastName(lastName),
+            setEmailAddress(emailAddress),
+            setPassword(password),
+            setConfirmPassword(confirmPassword)
+        ]
+        const user = {
+            firstName,
+            lastName,
+            emailAddress,
+            password,
+            confirmPassword
+        }
+        context.data.createUser(user)
+        .then(errors => {
+            if(errors.length){
+                setErrors({errors});
+            }else {
+                console.log(`${firstName} was successfully signed up!`)
+            }
+        })
+        .catch(err => {
+            console.log(err);
+            context.history.push('/error')
+        });
+    }
+    const cancel = () =>{
+        context.history.push('/');
+    }
 
     
     return(
@@ -23,7 +62,7 @@ const UserSignUp = ()=> {
              <Form 
                 cancel = {cancel}
                 errors = {setErrors(errors)}
-                submit = {submit}
+                submit = {submit()}
                 submitButtonText = "Sign Up"
                 elements = {() => (
                     <React.Fragment>
@@ -55,13 +94,13 @@ const UserSignUp = ()=> {
                     </React.Fragment>
                 )}
              />
-    
+                 <p>Already have a user account? Click here to <a href="sign-in.html">sign in</a>!</p>
             </div>
          </main>
         </div>
     )
 
-    
+ 
 
 }
 
