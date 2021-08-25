@@ -21,7 +21,9 @@ import Header from './Header';
         setCourses(courses))
         .catch(err => err.history.push('./error') );
 
-    }, [courses, context]);
+       
+
+    }, [context.data]);
 
     const courseList = courses.map(course => { 
         return(
