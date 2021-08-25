@@ -1,11 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import Header from './Header';
 import Form from './Form';
+import { Context } from '../Context';
 
 
 
-const UserSignUp = ({ Context })=> {
+const UserSignUp = ()=> {
+    let history = useHistory();
+    const context = useContext(Context);
 
+    
    
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
@@ -13,6 +18,28 @@ const UserSignUp = ({ Context })=> {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [errors, setErrors] = useState([]);
+
+    const change = (e) =>{
+        const value = e.target.value;
+        if (e.target.name === 'firstName') {
+            setFirstName(value);
+          }
+          else if (e.target.name === 'lastName') {
+            setLastName(value);
+          }
+          else if (e.target.name === 'emailAddress') {
+            setEmailAddress(value);
+          }
+          else if (e.target.name === 'password') {
+            setPassword(value);
+          }
+          else if (e.target.name === 'confirmPassword') {
+            setConfirmPassword(value);
+          }
+          else {
+            return;
+          }
+    }
 
     
      const submit = () =>{
@@ -25,7 +52,7 @@ const UserSignUp = ({ Context })=> {
             confirmPassword,
             errors
        };
-    Context.data.createUser(user)
+    context.data.createUser(user)
             .then(errors => {
                 if(errors.length){
                     setErrors({errors});
@@ -35,12 +62,12 @@ const UserSignUp = ({ Context })=> {
          })
           .catch(err => {
             console.log(err);
-            Context.history.push('/error')
+            history.push('/error')
          });
       }
 
     const cancel = () =>{
-        Context.history.push('/');
+       history.push('/');
     }
 
     
@@ -52,40 +79,51 @@ const UserSignUp = ({ Context })=> {
                 <h2>Sign Up</h2>
              <Form 
                 cancel = {cancel}
-                errors = {setErrors(errors)}
+                errors = {errors}
                 submit = {submit}
                 submitButtonText = "Sign Up"
                 elements = {() => (
                     <React.Fragment>
+                        <label htmlFor="firstName">First Name</label>
                         <input
                             id="firstName" 
                             name="firstName" 
                             type="text" 
+                            label= "First Name"
+                            onChange={change} 
                             value={firstName} />
+                         <label htmlFor="lastName">Last Name</label>
                          <input
                             id="lastName" 
                             name="lastName" 
                             type="text" 
+                            onChange={change} 
                             value={lastName} />
+                         <label htmlFor="emailAddress">Email Address</label>  
                          <input
                             id="emailAddress" 
                             name="emailAddress" 
                             type="emailAddress" 
-                            value={emailAddress} />   
+                            onChange={change} 
+                            value={emailAddress} />
+                         <label htmlFor="password">Password</label>      
                          <input
                             id="password" 
                             name="password" 
                             type="password" 
+                            onChange={change} 
                             value={password} />
+                         <label htmlFor="confirmPassword">Confirm Password</label>   
                          <input
                             id="confirmPassword" 
                             name="confirmPassword" 
                             type="password" 
+                            onChange={change} 
                             value={confirmPassword} />             
                     </React.Fragment>
                 )}
              />
-                 <p>Already have a user account? Click here to <a href="sign-in.html">sign in</a>!</p>
+                 <p>Already have a user account? Click here to <Link to="/signin">sign in</Link>!</p>
             </div>
          </main>
         </div>

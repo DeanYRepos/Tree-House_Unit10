@@ -26,8 +26,8 @@ const Form = (props) => {
         <form onSubmit={handleSubmit}> 
             {elements()}
             <button className="button" type="submit">{submitButtonText}</button>
-            <button className="button button-secondary" onclick={handleCancel}>Cancel</button>
-            <p>Don't have a user account? Click here to <Link to="/signup">sign up</Link>!</p>
+            <button className="button button-secondary" onClick={handleCancel}>Cancel</button>
+            {/* <p>Don't have a user account? Click here to <Link to="/signup">sign up</Link>!</p> */}
          </form>
       </div>
     );
