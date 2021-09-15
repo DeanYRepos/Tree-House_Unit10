@@ -8,21 +8,33 @@ const UserSignIn = () => {
     const context = useContext(Context);
     let history = useHistory();
     
-    const [emailAddress, setEmailAddress] = useState("");
+    const [emailAddress, setEmailAddress] = useState(""); //Rjones123
     const[password, setPassword] = useState("");
     const [errors, setErrors] = useState([]);
 
     const change = (e) =>{
+     
       const value = e.target.value;
+      
+        if(e.target.name === "emailAddress"){
+          setEmailAddress(value);
+        } 
+        else if (e.target.name === "password"){
+          setPassword(value);
+        }
+         else {
+          return;
+        }
+
     }
  
     const submit = () => {
-      const users = {
-        emailAddress,
-        password,
+      // const users = {
+      //   emailAddress,
+      //   password,
         
-      }
-      context.actions.signIn(users)
+      // }
+      context.actions.signIn(emailAddress, password)
       .then(user => {
         if(user === null){
           setErrors(()=> {
@@ -49,13 +61,31 @@ const UserSignIn = () => {
           <main>
             <div className="form--centered">
               <h2>Sign In</h2>
-              <form>
-                  <label htmlFor="emailAddress">Email Address</label>
-                  <input id="emailAddress" name="emailAddress" type="email" defaultValue />
-                  <label htmlFor="password">Password</label>
-                  <input id="password" name="password" type="password" defaultValue />
-                  <button className="button" type="submit">Sign In</button><button className="button button-secondary" onClick="event.preventDefault(); location.href='index.html';">Cancel</button>
-                </form>
+              <Form
+                cancel= {cancel}
+                errors={errors}
+                submit={submit}
+                submitButtonText = "Sign In"
+                elements= {() => (
+                  <React.Fragment>
+                    <input
+                      id="emailAddress"
+                      name="emailAddress"
+                      type="text"
+                      value= {emailAddress}
+                      onChange={change}
+                      placeholder= "Email Address" />
+                    <input
+                      id="password"
+                      name="password"
+                      type="password"
+                      value= {password}
+                      onChange={change}
+                      placeholder= "Password" />
+                    
+                  </React.Fragment>
+                )}
+              />
                 <p>Don't have a user account? Click here to <Link to="/signup">sign up</Link>!</p>
             </div>
           </main>
