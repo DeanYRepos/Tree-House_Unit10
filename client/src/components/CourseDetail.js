@@ -1,5 +1,5 @@
 import React, {  useState, useEffect, useContext } from 'react';
-import { Link, useParams, useHistory } from 'react-router-dom';
+import { Link, useParams, useHistory, useRouteMatch } from 'react-router-dom';
 import  { Context }  from '../Context';
 import Header from './Header';
 
@@ -7,8 +7,10 @@ const CourseDetail = ()=> {
 
     const history = useHistory();
     const { id } = useParams();
+    const match = useRouteMatch('/courses/:id')
     const  context = useContext(Context);
-    const [CourseDetails, setCourseDetails] = useState();
+    const [CourseDetails, setCourseDetails] = useState('');
+
 
     useEffect(() => {
 
@@ -21,6 +23,16 @@ const CourseDetail = ()=> {
 
     }, [context.data, history, id])
 
+    const materialsList = CourseDetails.materialsNeeded.map((materials) =>{
+        return(
+            <ul className="course--detail--list">
+                { materials }
+            </ul>
+           
+        )
+    });
+    console.log(materialsList);
+   
     return(
         <div id='root'>
             <Header/>
@@ -29,7 +41,7 @@ const CourseDetail = ()=> {
                 <div className="wrap">
                     <Link className="button" to="updatecourse.html">Update Course</Link>
                     <Link className="button" to="#">Delete Course</Link>
-                    <Link className="button button-secondary" to="index.html">Return to List</Link>
+                    <Link className="button button-secondary" to="/">Return to List</Link>
                 </div>
             </div>
             <div className="wrap">
@@ -39,15 +51,14 @@ const CourseDetail = ()=> {
                     <div>
                     <h3 className="course--detail--title">Course</h3>
                     <h4 className="course--name">{CourseDetails.title}</h4>
+                        <p>{CourseDetails.description}</p>
                     </div>
                     <div>
                     <h3 className="course--detail--title">Estimated Time</h3>
-                    <p>Time</p>
+                    <p>{CourseDetails.estimatedTime}</p>
 
                     <h3 className="course--detail--title">Materials Needed</h3>
-                    <ul className="course--detail--list">
-
-                    </ul>
+                        { materialsList }
                             </div>
 
                          </div>
