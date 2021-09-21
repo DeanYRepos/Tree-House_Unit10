@@ -1,5 +1,6 @@
 import React, {  useState, useEffect, useContext } from 'react';
 import { Link, useParams, useHistory, useRouteMatch } from 'react-router-dom';
+import ReactMarkdown from 'react-markdown';
 import  { Context }  from '../Context';
 import Header from './Header';
 
@@ -23,15 +24,8 @@ const CourseDetail = ()=> {
 
     }, [context.data, history, id])
 
-    const materialsList = CourseDetails.materialsNeeded.map((materials) =>{
-        return(
-            <ul className="course--detail--list">
-                { materials }
-            </ul>
-           
-        )
-    });
-    console.log(materialsList);
+  
+    console.log(CourseDetails.materialsNeeded);
    
     return(
         <div id='root'>
@@ -39,7 +33,7 @@ const CourseDetail = ()=> {
             <main>
             <div className="actions--bar">
                 <div className="wrap">
-                    <Link className="button" to="updatecourse.html">Update Course</Link>
+                    <Link className="button" to="updatecourse.html">Update Course</Link> {/** Update route when updateCourse/deleteCourse components are created */}
                     <Link className="button" to="#">Delete Course</Link>
                     <Link className="button button-secondary" to="/">Return to List</Link>
                 </div>
@@ -53,14 +47,19 @@ const CourseDetail = ()=> {
                     <h4 className="course--name">{CourseDetails.title}</h4>
                         <p>{CourseDetails.description}</p>
                     </div>
+
                     <div>
                     <h3 className="course--detail--title">Estimated Time</h3>
                     <p>{CourseDetails.estimatedTime}</p>
 
                     <h3 className="course--detail--title">Materials Needed</h3>
-                        { materialsList }
+                        <ReactMarkdown>
+                       
+                        { CourseDetails.materialsNeeded }
+                        
+                        </ReactMarkdown>  
                             </div>
-
+                    
                          </div>
                      </form>
                  </div>
