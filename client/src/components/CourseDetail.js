@@ -8,7 +8,7 @@ const CourseDetail = ()=> {
 
     const history = useHistory();
     const { id } = useParams();
-    const match = useRouteMatch('/courses/:id')
+    // const match = useRouteMatch('/courses/:id')
     const  context = useContext(Context);
     const [CourseDetails, setCourseDetails] = useState('');
 
@@ -25,7 +25,7 @@ const CourseDetail = ()=> {
     }, [context.data, history, id])
 
   
-    console.log(CourseDetails.materialsNeeded);
+    //console.log(CourseDetails.materialsNeeded);
    
     return(
         <div id='root'>
@@ -45,7 +45,7 @@ const CourseDetail = ()=> {
                     <div>
                     <h3 className="course--detail--title">Course</h3>
                     <h4 className="course--name">{CourseDetails.title}</h4>
-                        <p>{CourseDetails.description}</p>
+                        <p> {CourseDetails.description} </p>
                     </div>
 
                     <div>
