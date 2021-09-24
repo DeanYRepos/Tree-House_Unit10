@@ -8,7 +8,6 @@ const CourseDetail = ()=> {
 
     const history = useHistory();
     const { id } = useParams();
-    // const match = useRouteMatch('/courses/:id')
     const  context = useContext(Context);
     const [CourseDetails, setCourseDetails] = useState('');
 

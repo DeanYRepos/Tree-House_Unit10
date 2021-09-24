@@ -10,6 +10,15 @@ const CreateCourse = () => {
     const context = useContext(Context);
     let history = useHistory();
 
+    const [course, setCourse] = useState({
+      title:'',
+      description:'',
+      EstimatedTime:'',
+      materialsNeeded:''
+    });
+    const [emailAddress, setEmailAddress] = useState()
+    const [password, setPassword] = useState()
+    const [errors, setErrors] = useState([]);
 
 
     return (
@@ -18,13 +27,13 @@ const CreateCourse = () => {
           <main> 
             <div className="wrap">
         <h2>Create Course</h2>
-        <div className="validation--errors">
+        {/* <div className="validation--errors">
           <h3>Validation Errors</h3>
           <ul>
             <li>Please provide a value for "Title"</li>
             <li>Please provide a value for "Description"</li>
           </ul>
-        </div>
+        </div> */}
          <Form  
         //  {/* cancel = {cancel}
         //         errors = {errors}

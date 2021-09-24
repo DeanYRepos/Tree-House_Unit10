@@ -29,11 +29,7 @@ const UserSignIn = () => {
     }
  
     const submit = () => {
-      // const users = {
-      //   emailAddress,
-      //   password,
-        
-      // }
+      
       context.actions.signIn(emailAddress, password)
       .then(user => {
         if(user === null){
@@ -41,7 +37,7 @@ const UserSignIn = () => {
             return {errors: ['Sign in was unsuccessful'] };
           });
         } else {
-          history.push('/authenticated')
+          history.push('/')
           console.log(`SUCCESS! ${emailAddress} is logged in!`);
         }
       })

@@ -30,10 +30,13 @@ class App extends Component {
        
        <Switch>
          <Route exact path='/' component={CoursesWithContext}/>
-         <Route path='/signup' component={UserSignUpWithContext}/>
-         <Route path='/signin' component={UserSignInWithContext}/>
-         <Route  path='/courses/:id' component={CourseDetailWithContext}/>
          <Route path='/courses/create' component= { CreateCourseWithContext} />
+         <Route  path='/courses/:id' component={CourseDetailWithContext}/>
+         <Route path='/signin' component={UserSignInWithContext}/>
+         <Route path='/signup' component={UserSignUpWithContext}/>
+
+        
+         
        </Switch>
      </div>
       </Router>
