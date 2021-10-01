@@ -9,7 +9,7 @@ export const Context = React.createContext();
 export class Provider extends Component{
 
     state = {
-        authenticatedUser: Cookies.getJSON('authenticatedUser') || null   
+        authenticatedUser:  null  // Cookies.getJSON('authenticatedUser') ||
     };
 
     constructor(){
@@ -41,6 +41,7 @@ export class Provider extends Component{
                     authenticatedUser: user,
                 };
             });
+            Cookies.set('authenticatedUser', JSON.stringify(user),{expires: 1});
         }
         return user;
 
