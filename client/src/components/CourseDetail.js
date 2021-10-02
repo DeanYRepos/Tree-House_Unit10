@@ -32,7 +32,7 @@ const CourseDetail = ()=> {
             <main>
             <div className="actions--bar">
                 <div className="wrap">
-                    <Link className="button" to="updatecourse.html">Update Course</Link> {/** Update route when updateCourse/deleteCourse components are created */}
+                    <Link className="button" to={`/courses/${CourseDetails.id}/update`}>Update Course</Link> {/** Update route when updateCourse/deleteCourse components are created */}
                     <Link className="button" to="#">Delete Course</Link>
                     <Link className="button button-secondary" to="/">Return to List</Link>
                 </div>

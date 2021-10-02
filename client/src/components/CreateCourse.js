@@ -17,7 +17,7 @@ const CreateCourse = () => {
       materialsNeeded:'',
       userId: context.authenticatedUser
     });
-    console.log(course);
+   
    
     const [emailAddress, setEmailAddress] = useState()
     const [password, setPassword] = useState()
@@ -109,28 +109,28 @@ const CreateCourse = () => {
                         
                       <label htmlFor="courseDescription">Course Description</label>
                        <textarea 
-                       id="courseDescription" 
-                       name="courseDescription"
-                       defaultValue={course.description} 
-                      //  onChange={change}  
+                        id="courseDescription" 
+                         name="courseDescription"
+                         defaultValue={course.description} 
+                         onChange={change}  
                        />
                          </div>
                          <div>
                          <label htmlFor="estimatedTime">Estimated Time</label>
                          <input 
-                         id="estimatedTime" 
-                         name="estimatedTime"
-                          type="text" 
-                          defaultValue={course.estimatedTime}
-                          onChange={change}
+                           id="estimatedTime" 
+                           name="estimatedTime"
+                           type="text" 
+                           defaultValue={course.estimatedTime}
+                           onChange={change}
                            />
                         
                          <label htmlFor="materialsNeeded">Materials Needed</label>
                          <textarea 
-                         id="materialsNeeded" 
-                         name="materialsNeeded" 
-                         defaultValue={course.materialsNeeded} 
-                         onChange={change}  
+                           id="materialsNeeded" 
+                           name="materialsNeeded" 
+                           defaultValue={course.materialsNeeded} 
+                           onChange={change}  
                          />
                          </div>
                          </div>
