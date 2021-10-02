@@ -3,6 +3,7 @@ import  { Context }  from '../Context';
 import { useHistory, useParams } from 'react-router-dom';
 import Header from './Header';
 import Form from './Form';
+import CourseDetail from './CourseDetail';
 
 
 const UpdateCourse = () => {
@@ -22,8 +23,22 @@ const UpdateCourse = () => {
       const [emailAddress, setEmailAddress] = useState()
       const [password, setPassword] = useState()
       const [errors, setErrors] = useState([]);
-      //useEffect I think
+      const [CourseDetails, setCourseDetails] = useState('');
 
+
+      //useEffect I think?
+     
+    useEffect(() => {
+
+        context.data.getCourse(id)
+        .then(CourseDetails => {
+            setCourseDetails(CourseDetails)
+            console.log(CourseDetails);
+        })
+        .catch(err => history.push('./error') );
+
+    }, [context.data, history, id])
+   
       const change = (e) => {
         const value = e.target.value
         if (e.target.name === 'title'){
@@ -93,10 +108,37 @@ const UpdateCourse = () => {
                                  id="courseTitle"
                                  name="courseTitle"
                                  type="text" 
-                                 defaultValue={course.title} />
+                                 defaultValue={CourseDetails.title}
+                                 onChange= { change }
+                             />
 
                                     <p>By Joe Smith</p>
+                            <label htmlFor="courseDescription">Course Description</label>
+                            <textarea 
+                                id="courseDescription"  
+                                name="courseDescription" 
+                                defaultValue= {CourseDetails.description}
+                                onChange= { change }    
+                                />
                              </div>
+                         <div>
+                             <label htmlFor="estimatedTime">Estimated Time</label>
+                             <input
+                                 id="estimatedTime" 
+                                 name="estimatedTime" 
+                                 type="text"
+                                 defaultValue={CourseDetails.estimatedTime}
+                                 onChange={change} />
+                
+                             <label htmlFor="materialsNeeded">Materials Needed</label>
+                             <textarea 
+                             id="materialsNeeded" 
+                             name="materialsNeeded"
+                             defaultValue={CourseDetails.materialsNeeded} 
+                             onChange={change}
+                             />
+                             
+                              </div>
                          </div>
                        </React.Fragment>
                     )}  
