@@ -1,6 +1,5 @@
-import React, {  useState, useEffect, useContext } from 'react';
-import { Link, useParams, useHistory} from 'react-router-dom';
-import ReactMarkdown from 'react-markdown';
+import React, {  useState, useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import  { Context }  from '../Context';
 import Header from './Header';
 import Form from './Form';
@@ -14,9 +13,12 @@ const CreateCourse = () => {
     const [course, setCourse] = useState({
       title:'',
       description:'',
-      EstimatedTime:'',
-      materialsNeeded:''
+      estimatedTime:'',
+      materialsNeeded:'',
+      userId: context.authenticatedUser
     });
+    console.log(course);
+   
     const [emailAddress, setEmailAddress] = useState()
     const [password, setPassword] = useState()
     const [errors, setErrors] = useState([]);
@@ -24,16 +26,16 @@ const CreateCourse = () => {
     const change = (e) => {
       const value = e.target.value
       if (e.target.name === 'title'){
-        setCourse.title(value); 
+        setCourse({title: value}); 
         }
         else if (e.target.name === 'description') {
-          setCourse.description(value);
+          setCourse({description: value});
           }
         else if (e.target.name === 'estimatedTime') {
-          setCourse.EstimatedTime(value);
+          setCourse({estimatedTime: value});
         }  
         else if (e.target.name === 'materialsNeeded') {
-          setCourse.materialsNeeded(value);
+          setCourse({materialsNeeded: value});
         }
         else {
           return;
@@ -49,20 +51,21 @@ const CreateCourse = () => {
         errors
       
       };
-
+     
       context.data.createCourse(courseDetails).
       then( errors => {
         if(errors.length) {
           setErrors({errors});
         } else {
           console.log("Course was successfully created!");
+          history.push('/')
         }
       })
       .catch(err => {
         console.log(err);
         history.push('/error');
       });
-
+     
     }
     
     const cancel = () =>{
@@ -97,7 +100,7 @@ const CreateCourse = () => {
                       id="courseTitle" 
                       name="courseTitle" 
                       type="text" 
-                      value={""}
+                      defaultValue={course.title}
                       onChange={change}
                       />
                       
@@ -108,8 +111,8 @@ const CreateCourse = () => {
                        <textarea 
                        id="courseDescription" 
                        name="courseDescription"
-                       defaultValue={""} 
-                       onChange={change}  
+                       defaultValue={course.description} 
+                      //  onChange={change}  
                        />
                          </div>
                          <div>
@@ -118,7 +121,7 @@ const CreateCourse = () => {
                          id="estimatedTime" 
                          name="estimatedTime"
                           type="text" 
-                          defaultValue={""}
+                          defaultValue={course.estimatedTime}
                           onChange={change}
                            />
                         
@@ -126,7 +129,7 @@ const CreateCourse = () => {
                          <textarea 
                          id="materialsNeeded" 
                          name="materialsNeeded" 
-                         defaultValue={""} 
+                         defaultValue={course.materialsNeeded} 
                          onChange={change}  
                          />
                          </div>
