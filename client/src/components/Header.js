@@ -15,24 +15,19 @@ const Header = () => {
         {authUser ? 
         <React.Fragment>
             <ul className="header--signedin">
-           <span>Welcome, {authUser.firstName}!</span>
+           <span>Welcome, {authUser.firstName}! </span>
             <Link className="signout" to="/signout">Sign Out</Link>
             </ul>
         </React.Fragment>
-        
         :
         <React.Fragment>
         <ul className="header--signedout">
           <li>  <Link to="/signup">Sign Up</Link></li>
-           
-           <li> <Link to="/signin">Sign In</Link></li>
+          <li> <Link to="/signin">Sign In</Link></li>
          </ul>
         </React.Fragment>
         } 
-            {/* <ul className="header--signedout">
-            <li></li>
-            <li></li>
-            </ul> */}
+    
         </nav>
        
     </div>

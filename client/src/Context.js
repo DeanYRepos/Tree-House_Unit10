@@ -23,7 +23,8 @@ export class Provider extends Component{
         authenticatedUser,
         data: this.data,
         actions: {
-            signIn: this.signIn
+            signIn: this.signIn,
+            signOut: this.signOut
         }
     };
         
@@ -46,7 +47,18 @@ export class Provider extends Component{
         return user;
 
     }
-}
+    signOut = () => {
+        this.setState(() => {
+          return{
+           authenticateUser: null,
+          };
+        });
+        Cookies.remove('authenticatedUser');
+       }
+
+     }
+    
+
         export const Consumer = Context.Consumer;
         /**
  * A higher-order component that wraps the provided component in a Context Consumer component.

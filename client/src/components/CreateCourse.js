@@ -105,7 +105,7 @@ const CreateCourse = () => {
                       />
                       
                          
-                      <p>{authUser}</p> {/**add authenticated user */}
+                      {/* <p>{authUser}</p> *add authenticated user */}
                         
                       <label htmlFor="courseDescription">Course Description</label>
                        <textarea 
