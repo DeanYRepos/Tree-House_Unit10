@@ -13,7 +13,7 @@ import UserSignUp from './components/UserSignUp';
 import UserSignIn from './components/UserSignIn';
 import UserSignOut from './components/UserSignOut'
 import UpdateCourse from './components/UpdateCourse';
-
+import PrivateRoute from './PrivateRoute';
 import withContext from './Context';
 
 
