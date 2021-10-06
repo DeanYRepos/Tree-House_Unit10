@@ -57,6 +57,10 @@ const UserSignUp = ()=> {
                 if(errors.length){
                     setErrors({errors});
                 }else {
+                   context.actions.signIn(emailAddress, password)
+                   .then(() => {
+                      history.push('/')
+                   })
                     console.log(`${firstName} was successfully signed up!`)
                 }
          })
