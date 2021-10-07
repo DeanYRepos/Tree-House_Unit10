@@ -1,11 +1,13 @@
 import React, {useContext} from 'react';
 import  { Context }  from '../Context';
 import { Link } from 'react-router-dom';
+import UserSignOut from './UserSignOut';
 
 
 const Header = () => {
    const context = useContext(Context);
    const authUser = context.authenticatedUser;
+   console.log(authUser);
     return(
         <header>
 

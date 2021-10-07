@@ -1,15 +1,16 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import { Consumer, Context } from './Context';
+import { Consumer } from './Context';
 
 const PrivateRoute = ({component: Component, ...rest}) => {
-
+   
     return (
         <Consumer>
-            { contest => (
+            { context => (
                 <Route
                 {...rest}
-                render={props => Context.authenticatedUser ? (
+                
+                render={props => context.authenticatedUser ? (
                     <Component {...props}/>
                 ) : (
                     <Redirect to={{

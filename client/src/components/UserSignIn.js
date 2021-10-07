@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import Header from './Header';
 import Form from './Form'
 import  { Context }  from '../Context';
@@ -7,6 +7,7 @@ import  { Context }  from '../Context';
 const UserSignIn = () => {
     const context = useContext(Context);
     let history = useHistory();
+    const location = useLocation();
     
     const [emailAddress, setEmailAddress] = useState(""); //Rjones123
     const[password, setPassword] = useState("");
@@ -29,7 +30,8 @@ const UserSignIn = () => {
     }
  
     const submit = () => {
-      
+      const  from  = location.state || {from: { pathname: '/'}};
+
       context.actions.signIn(emailAddress, password)
       .then(user => {
         if(user === null){
@@ -37,7 +39,7 @@ const UserSignIn = () => {
             return {errors: ['Sign in was unsuccessful'] };
           });
         } else {
-          history.push('/')
+          history.push(from);
           console.log(`SUCCESS! ${emailAddress} is logged in!`);
         }
       })
