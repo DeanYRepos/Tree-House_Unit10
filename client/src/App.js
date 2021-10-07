@@ -34,7 +34,6 @@ class App extends Component {
     return (
      <Router>
      <div>   
-    
        <Switch>
          <Route exact path='/' component={CoursesWithContext}/>
          <PrivateRoute path='/courses/create' component={ CreateCourseWithContext} />
@@ -44,7 +43,6 @@ class App extends Component {
          <Route path='/signup' component={UserSignUpWithContext}/>
          <Route path='/signout' component={UserSignOutWithContext}/>
        </Switch>
-
      </div>
       </Router>
     );

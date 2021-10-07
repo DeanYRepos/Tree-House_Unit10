@@ -23,13 +23,7 @@ const CourseDetail = ()=> {
 
     }, [context.data, history, id])
 
-    // useEffect(() => {
-    //     context.data.deleteCourse(id, emailAddress, password )
-    //     .then()
-    // })
 
-  
-    
    
     return(
         <div id='root'>
