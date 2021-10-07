@@ -30,7 +30,7 @@ const UserSignIn = () => {
     }
  
     const submit = () => {
-      const  from  = location.state || {from: { pathname: '/'}};
+      const { from } = location.state || {from: { pathname: '/'}};
 
       context.actions.signIn(emailAddress, password)
       .then(user => {
