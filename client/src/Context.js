@@ -8,14 +8,18 @@ export const Context = React.createContext();
 
 export class Provider extends Component{
 
-    state = {
-        authenticatedUser: this.cookie ? JSON.parse(this.cookie) : null
-    };
 
     constructor(){
+      
         super();
         this.data = new Data();
-    }
+
+        this.cookie = Cookies.get('authenticatedUser');
+        this.state = {
+            authenticatedUser: this.cookie ? JSON.parse(this.cookie) : null
+        };
+      }
+      
     render(){
     
     const { authenticatedUser } = this.state;
@@ -48,13 +52,9 @@ export class Provider extends Component{
 
     }
     signOut =  () => {
-        this.setState(() => {
-          return{
-           authenticateUser: null,
-          };
-        });
-        Cookies.get();
-        Cookies.remove('authenticatedUser', {path:'/'});
+        this.setState( { authenticateUser: null });
+      
+        Cookies.remove('authenticatedUser');
         console.log('User logged out.');
        }
 

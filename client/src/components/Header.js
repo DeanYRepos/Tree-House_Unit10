@@ -30,10 +30,9 @@ const Header = () => {
         </React.Fragment>
         )  } 
     
-        </nav>
-       
+        </nav> 
     </div>
-        </header>
+ </header>
     )
 }
 export default Header;
