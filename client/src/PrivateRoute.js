@@ -9,7 +9,7 @@ const PrivateRoute = ({component: Component, ...rest}) => {
             { context => (
                 <Route
                 {...rest}
-                
+
                 render={props => context.authenticatedUser ? (
                     <Component {...props}/>
                 ) : (

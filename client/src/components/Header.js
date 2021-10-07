@@ -14,7 +14,7 @@ const Header = () => {
         <div className="wrap header--flex">
         <h1 className="header--logo"><a href="/">Courses</a></h1>
         <nav>
-        {authUser ? (
+        { authUser ? (
         <React.Fragment>
             
            <span>Welcome, {authUser.firstName}! </span>

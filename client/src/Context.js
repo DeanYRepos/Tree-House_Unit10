@@ -9,7 +9,7 @@ export const Context = React.createContext();
 export class Provider extends Component{
 
     state = {
-        authenticatedUser: Cookies.getJSON('authenticatedUser') || null  
+        authenticatedUser: this.cookie ? JSON.parse(this.cookie) : null
     };
 
     constructor(){
@@ -53,7 +53,9 @@ export class Provider extends Component{
            authenticateUser: null,
           };
         });
-        Cookies.remove('authenticatedUser');
+        Cookies.get();
+        Cookies.remove('authenticatedUser', {path:'/'});
+        console.log('User logged out.');
        }
 
      }
