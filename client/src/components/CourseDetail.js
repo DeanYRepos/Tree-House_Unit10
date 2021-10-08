@@ -2,7 +2,7 @@ import React, {  useState, useEffect, useContext } from 'react';
 import { Link, useParams, useHistory, useRouteMatch } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import  { Context }  from '../Context';
-import Header from './Header';
+
 
 const CourseDetail = ()=> {
 
@@ -27,7 +27,7 @@ const CourseDetail = ()=> {
    
     return(
         <div id='root'>
-            <Header/>
+         
             <main>
             <div className="actions--bar">
                 <div className="wrap">

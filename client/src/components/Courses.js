@@ -1,7 +1,7 @@
 import React, {  useState, useEffect, useContext } from 'react'; //don't forget to replace Component into curly braces if useState doesn't work out
 import { Link } from 'react-router-dom';
 import  { Context }  from '../Context';
-import Header from './Header';
+
 
 
 
@@ -37,7 +37,7 @@ import Header from './Header';
     
     return(
         <div id="root">
-         <Header/>
+        
          <main>
              <div className="wrap main--grid">
                 {courseList}

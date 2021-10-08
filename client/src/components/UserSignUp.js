@@ -1,6 +1,5 @@
 import React, { useState, useContext } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import Header from './Header';
 import Form from './Form';
 import { Context } from '../Context';
 
@@ -77,7 +76,6 @@ const UserSignUp = ()=> {
     
     return(
         <div id="root">
-            <Header/>
          <main>
              <div className="form--centered">
                 <h2>Sign Up</h2>

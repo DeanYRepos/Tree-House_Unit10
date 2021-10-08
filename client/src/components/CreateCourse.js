@@ -1,7 +1,6 @@
 import React, {  useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import  { Context }  from '../Context';
-import Header from './Header';
 import Form from './Form';
 
 const CreateCourse = () => {
@@ -74,7 +73,7 @@ const CreateCourse = () => {
 
     return (
         <div id="root">
-            <Header/>
+          
           <main> 
             <div className="wrap">
         <h2>Create Course</h2>

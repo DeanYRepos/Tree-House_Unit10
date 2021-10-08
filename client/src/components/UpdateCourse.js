@@ -1,7 +1,6 @@
 import React, {  useState, useEffect, useContext } from 'react';
 import  { Context }  from '../Context';
 import { useHistory, useParams } from 'react-router-dom';
-import Header from './Header';
 import Form from './Form';
 //import CourseDetail from './CourseDetail';
 
@@ -90,7 +89,6 @@ const UpdateCourse = () => {
 
     return(
         <div id="root">
-        <Header/>
             <main>
                 <div className="wrap">
                   <h2>Update Course</h2>

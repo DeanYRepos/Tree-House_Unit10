@@ -7,11 +7,10 @@ import { Provider } from './Context';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
-  <React.StrictMode>
+
   <Provider>
     <App />
-  </Provider>
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById('root')
 );
 
