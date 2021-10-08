@@ -11,8 +11,7 @@ import  { Context }  from '../Context';
     
     const [courses, setCourses] = useState([]);
     
-     
-    //console.log(getCourses);
+    console.log(context.authenticatedUser);
    
     useEffect(() => {
         
