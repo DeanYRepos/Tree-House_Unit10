@@ -52,6 +52,7 @@ export class Provider extends Component{
 
     }
     signOut =  () => {
+        
         this.setState( { authenticateUser: null });
       
         Cookies.remove('authenticatedUser');
