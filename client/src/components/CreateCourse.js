@@ -51,9 +51,10 @@ const CreateCourse = () => {
       
       };
      
-      context.data.createCourse(courseDetails).
-      then( errors => {
+      context.data.createCourse(courseDetails)
+      .then( errors => {
         if(errors.length) {
+          console.log('bad stuff');
           setErrors({errors});
         } else {
           console.log("Course was successfully created!");
@@ -104,7 +105,7 @@ const CreateCourse = () => {
                       />
                       
                          
-                      {/* <p>{authUser}</p> *add authenticated user */}
+                      <p>By {`${authUser.firstName} ${authUser.lastName}`}</p> 
                         
                       <label htmlFor="courseDescription">Course Description</label>
                        <textarea 

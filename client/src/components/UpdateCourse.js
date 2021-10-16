@@ -17,15 +17,15 @@ const UpdateCourse = () => {
         description:'',
         estimatedTime:'',
         materialsNeeded:'',
-        userId: context.authenticatedUser
+        // userId: context.authenticatedUser
       });
-      const [emailAddress, setEmailAddress] = useState()
-      const [password, setPassword] = useState()
+      // const [emailAddress, setEmailAddress] = useState()
+      // const [password, setPassword] = useState()
       const [errors, setErrors] = useState([]);
       const [CourseDetails, setCourseDetails] = useState('');
 
 
-      //useEffect I think?
+     
      
     useEffect(() => {
 
@@ -61,15 +61,14 @@ const UpdateCourse = () => {
 
         const courseDetails = {
           course,
-          emailAddress,
-          password,
           errors
         
         };
        
-        context.data.updateCourse(courseDetails, id).
-        then( errors => {
+        context.data.updateCourse(courseDetails, id, authUser.emailAddress, authUser.password)
+        .then( errors => {
           if(errors.length) {
+           // console.log(authUser.emailAddress);
             setErrors({errors});
           } else {
             console.log("Course was successfully updated!");
