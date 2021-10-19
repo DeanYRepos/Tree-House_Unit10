@@ -2,7 +2,7 @@ import React, {  useState, useEffect, useContext } from 'react';
 import  { Context }  from '../Context';
 import { useHistory, useParams } from 'react-router-dom';
 import Form from './Form';
-//import CourseDetail from './CourseDetail';
+
 
 
 const UpdateCourse = () => {
@@ -17,7 +17,7 @@ const UpdateCourse = () => {
         description:'',
         estimatedTime:'',
         materialsNeeded:'',
-        // userId: context.authenticatedUser
+        userId: context.authenticatedUser
       });
       // const [emailAddress, setEmailAddress] = useState()
       // const [password, setPassword] = useState()
@@ -32,7 +32,7 @@ const UpdateCourse = () => {
         context.data.getCourse(id)
         .then(CourseDetails => {
             setCourseDetails(CourseDetails)
-            console.log(CourseDetails);
+          
         })
         .catch(err => history.push('./error') );
 

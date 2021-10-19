@@ -18,8 +18,8 @@ const CreateCourse = () => {
     });
    
    
-    const [emailAddress, setEmailAddress] = useState()
-    const [password, setPassword] = useState()
+    // const [emailAddress, setEmailAddress] = useState()
+    // const [password, setPassword] = useState()
     const [errors, setErrors] = useState([]);
 
     const change = (e) => {
@@ -45,13 +45,13 @@ const CreateCourse = () => {
 
       const courseDetails = {
         course,
-        emailAddress,
-        password,
+        // emailAddress,
+        // password,
         errors
       
       };
      
-      context.data.createCourse(courseDetails)
+      context.data.createCourse(courseDetails, authUser.emailAddress, authUser.password)
       .then( errors => {
         if(errors.length) {
           console.log('bad stuff');
