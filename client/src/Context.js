@@ -13,6 +13,7 @@ export class Provider extends Component {
 
     this.state = {
       authenticatedUser: this.cookie ? JSON.parse(this.cookie) : null
+
     };
   }
 
@@ -34,12 +35,15 @@ export class Provider extends Component {
   }
 
   
-  signIn = async (emailAddress  , password) => {
+  signIn = async (emailAddress  ,password) => {
     const user = await this.data.getUser(emailAddress, password);
     if (user !== null) {
       this.setState(() => {
+          password = user.password;
+          emailAddress = user.emailAddress;
         return {
           authenticatedUser: user,
+            
         };
       });
       const cookieOptions = {

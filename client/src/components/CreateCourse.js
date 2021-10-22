@@ -8,7 +8,7 @@ const CreateCourse = () => {
     const context = useContext(Context);
     let history = useHistory();
     const authUser = context.authenticatedUser;
-
+  
     const [course, setCourse] = useState({
       title:'',
       description:'',
@@ -16,8 +16,8 @@ const CreateCourse = () => {
       materialsNeeded:'',
       userId: context.authenticatedUser
     });
-   
-   
+    console.log(course);
+   console.log(authUser);
     // const [emailAddress, setEmailAddress] = useState()
     // const [password, setPassword] = useState()
     const [errors, setErrors] = useState([]);
