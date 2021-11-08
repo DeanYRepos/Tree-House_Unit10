@@ -9,32 +9,36 @@ const CreateCourse = () => {
     let history = useHistory();
     const authUser = context.authenticatedUser;
   
-    const [course, setCourse] = useState({
-      title:'',
-      description:'',
-      estimatedTime:'',
-      materialsNeeded:'',
-      userId: context.authenticatedUser
-    });
-    console.log(course);
+      const [title, setTitle] = useState();
+      const [description, setDescription] = useState();
+      const [estimatedTime, setEstimatedTime] = useState();
+      const [materialsNeeded, setMaterialsNeeded] = useState();
+      const [userId, setUserId] = useState(authUser);
+    // const [course, setCourse] = useState({
+    //   title:'',
+    //   description:'',
+    //   estimatedTime:'',
+    //   materialsNeeded:'',
+    //   userId: context.authenticatedUser
+    // });
+    
    console.log(authUser);
-    // const [emailAddress, setEmailAddress] = useState()
-    // const [password, setPassword] = useState()
+ 
     const [errors, setErrors] = useState([]);
 
     const change = (e) => {
       const value = e.target.value
-      if (e.target.name === 'title'){
-        setCourse({title: value}); 
+      if (e.target.name === 'courseTitle'){
+        setTitle(value); 
         }
-        else if (e.target.name === 'description') {
-          setCourse({description: value});
+        else if (e.target.name === 'courseDescription') {
+          setDescription(value);
           }
         else if (e.target.name === 'estimatedTime') {
-          setCourse({estimatedTime: value});
+          setEstimatedTime(value);
         }  
         else if (e.target.name === 'materialsNeeded') {
-          setCourse({materialsNeeded: value});
+          setMaterialsNeeded( value);
         }
         else {
           return;
@@ -44,12 +48,14 @@ const CreateCourse = () => {
     const submit = () => {
 
       const courseDetails = {
-        course,
-        // emailAddress,
-        // password,
+        title,
+        description,
+        estimatedTime,
+        materialsNeeded,
         errors
       
       };
+      console.log(courseDetails);
      
       context.data.createCourse(courseDetails, authUser.emailAddress, authUser.password)
       .then( errors => {
@@ -100,7 +106,7 @@ const CreateCourse = () => {
                       id="courseTitle" 
                       name="courseTitle" 
                       type="text" 
-                      defaultValue={course.title}
+                      defaultValue={title}
                       onChange={change}
                       />
                       
@@ -111,7 +117,7 @@ const CreateCourse = () => {
                        <textarea 
                         id="courseDescription" 
                          name="courseDescription"
-                         defaultValue={course.description} 
+                         defaultValue={description} 
                          onChange={change}  
                        />
                          </div>
@@ -121,7 +127,7 @@ const CreateCourse = () => {
                            id="estimatedTime" 
                            name="estimatedTime"
                            type="text" 
-                           defaultValue={course.estimatedTime}
+                           defaultValue={estimatedTime}
                            onChange={change}
                            />
                         
@@ -129,7 +135,7 @@ const CreateCourse = () => {
                          <textarea 
                            id="materialsNeeded" 
                            name="materialsNeeded" 
-                           defaultValue={course.materialsNeeded} 
+                           defaultValue={materialsNeeded} 
                            onChange={change}  
                          />
                          </div>

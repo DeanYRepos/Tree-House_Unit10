@@ -11,14 +11,17 @@ const UpdateCourse = () => {
     let history = useHistory();
     const { id } = useParams();
     const authUser = context.authenticatedUser;
-    
-    const [course, setCourse] = useState({
-        title:'',
-        description:'',
-        estimatedTime:'',
-        materialsNeeded:'',
-        userId: context.authenticatedUser
-      });
+    const [title, setTitle] = useState();
+    const [description, setDescription] = useState();
+    const [estimatedTime, setEstimatedTime] = useState();
+    const [materialsNeeded, setMaterialsNeeded] = useState();
+    // const [course, setCourse] = useState({
+    //     title:'',
+    //     description:'',
+    //     estimatedTime:'',
+    //     materialsNeeded:'',
+    //     userId: context.authenticatedUser
+    //   });
       // const [emailAddress, setEmailAddress] = useState()
       // const [password, setPassword] = useState()
       const [errors, setErrors] = useState([]);
@@ -38,33 +41,36 @@ const UpdateCourse = () => {
 
     }, [context.data, history, id])
    
-      const change = (e) => {
-        const value = e.target.value
-        if (e.target.name === 'title'){
-          setCourse({title: value}); 
+    const change = (e) => {
+      const value = e.target.value
+      if (e.target.name === 'courseTitle'){
+        setTitle(value); 
+        }
+        else if (e.target.name === 'courseDescription') {
+          setDescription(value);
           }
-          else if (e.target.name === 'description') {
-            setCourse({description: value});
-            }
-          else if (e.target.name === 'estimatedTime') {
-            setCourse({estimatedTime: value});
-          }  
-          else if (e.target.name === 'materialsNeeded') {
-            setCourse({materialsNeeded: value});
-          }
-          else {
-            return;
-          }
-      }
+        else if (e.target.name === 'estimatedTime') {
+          setEstimatedTime(value);
+        }  
+        else if (e.target.name === 'materialsNeeded') {
+          setMaterialsNeeded( value);
+        }
+        else {
+          return;
+        }
+    }
    
       const submit = () => {
 
         const courseDetails = {
-          course,
+          title,
+          description,
+          estimatedTime,
+          materialsNeeded,
           errors
         
         };
-       
+       console.log(courseDetails);
         context.data.updateCourse(courseDetails, id, authUser.emailAddress, authUser.password)
         .then( errors => {
           if(errors.length) {

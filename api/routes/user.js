@@ -17,6 +17,7 @@ const User = db.User;
       firstName: user.firstName,
       lastName:  user.lastName,
       emailAddress: user.emailAddress,
+      password: user.password 
 
      });
     
