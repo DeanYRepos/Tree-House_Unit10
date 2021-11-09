@@ -18,9 +18,13 @@ export class Provider extends Component {
   }
 
   render() {
-    const { authenticatedUser } = this.state;
+    const { 
+      authenticatedUser,
+    
+               } = this.state;
     const value = {
       authenticatedUser,
+     
       data: this.data,
       actions: {
         signIn: this.signIn,
@@ -35,13 +39,17 @@ export class Provider extends Component {
   }
 
   
-  signIn = async (emailAddress  ,password) => {
+  signIn = async (emailAddress, password) => {
     const user = await this.data.getUser(emailAddress, password);
+    
     if (user !== null) {
+      user.password = password;
       this.setState(() => {
-        
+       
         return {
           authenticatedUser: user,
+          // password: password,
+          // emailAddress: emailAddress
             
         };
       });

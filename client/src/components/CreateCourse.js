@@ -13,7 +13,7 @@ const CreateCourse = () => {
       const [description, setDescription] = useState();
       const [estimatedTime, setEstimatedTime] = useState();
       const [materialsNeeded, setMaterialsNeeded] = useState();
-      const [userId, setUserId] = useState(authUser.id);
+      const [userId, setUserId] = useState(context.authenticatedUser.id);
     
    console.log(authUser);
  
@@ -45,7 +45,7 @@ const CreateCourse = () => {
         description,
         estimatedTime,
         materialsNeeded,
-        userId,
+        // userId,
         errors
       
       };
@@ -64,6 +64,7 @@ const CreateCourse = () => {
       .catch(err => {
         console.log(err);
         history.push('/error');
+       
       });
      
     }
