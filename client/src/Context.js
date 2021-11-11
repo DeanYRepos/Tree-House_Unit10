@@ -48,9 +48,7 @@ export class Provider extends Component {
        
         return {
           authenticatedUser: user,
-          // password: password,
-          // emailAddress: emailAddress
-            
+        
         };
       });
       const cookieOptions = {

@@ -104,7 +104,7 @@ export default class Data {
     }
 
  }
-  // create delete course helper here
+  // create delete course helper 
 
   async deleteCourse ( id, emailAddress, password) {
     const response = await this.api(`/courses/${id}`, 'DELETE', true, { emailAddress, password })

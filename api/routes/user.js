@@ -18,7 +18,7 @@ const User = db.User;
       lastName:  user.lastName,
       emailAddress: user.emailAddress,
       password: user.password,
-      userId: user.id
+      userId: user.id,
 
 
      });

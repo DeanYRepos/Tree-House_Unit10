@@ -15,17 +15,8 @@ const UpdateCourse = () => {
     const [description, setDescription] = useState();
     const [estimatedTime, setEstimatedTime] = useState();
     const [materialsNeeded, setMaterialsNeeded] = useState();
-    // const [course, setCourse] = useState({
-    //     title:'',
-    //     description:'',
-    //     estimatedTime:'',
-    //     materialsNeeded:'',
-    //     userId: context.authenticatedUser
-    //   });
-      // const [emailAddress, setEmailAddress] = useState()
-      // const [password, setPassword] = useState()
-      const [errors, setErrors] = useState([]);
-      const [CourseDetails, setCourseDetails] = useState('');
+    const [errors, setErrors] = useState([]);
+    const [CourseDetails, setCourseDetails] = useState('');
 
 
      
@@ -44,7 +35,7 @@ const UpdateCourse = () => {
     const change = (e) => {
       const value = e.target.value
       if (e.target.name === 'courseTitle'){
-        setTitle(value); 
+         setTitle(value); 
         }
         else if (e.target.name === 'courseDescription') {
           setDescription(value);
@@ -67,6 +58,7 @@ const UpdateCourse = () => {
           description,
           estimatedTime,
           materialsNeeded,
+          id,
           errors
         
         };
@@ -74,8 +66,8 @@ const UpdateCourse = () => {
         context.data.updateCourse(courseDetails, id, authUser.emailAddress, authUser.password)
         .then( errors => {
           if(errors.length) {
-           // console.log(authUser.emailAddress);
             setErrors({errors});
+             console.log({errors});
           } else {
             console.log("Course was successfully updated!");
             history.push('/')

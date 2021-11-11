@@ -13,7 +13,7 @@ const CreateCourse = () => {
       const [description, setDescription] = useState();
       const [estimatedTime, setEstimatedTime] = useState();
       const [materialsNeeded, setMaterialsNeeded] = useState();
-      const [userId, setUserId] = useState(context.authenticatedUser.id);
+      const [userId, setUserId] = useState(context.authenticatedUser.userId);
     
    console.log(authUser);
  
@@ -45,7 +45,7 @@ const CreateCourse = () => {
         description,
         estimatedTime,
         materialsNeeded,
-        // userId,
+        userId,
         errors
       
       };
