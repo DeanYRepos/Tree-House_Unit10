@@ -35,7 +35,7 @@ const UpdateCourse = () => {
     const change = (e) => {
       const value = e.target.value
       if (e.target.name === 'courseTitle'){
-         setTitle(value); 
+        setTitle(value); 
         }
         else if (e.target.name === 'courseDescription') {
           setDescription(value);

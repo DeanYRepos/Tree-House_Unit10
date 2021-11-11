@@ -8,7 +8,7 @@ const UserSignIn = () => {
     let history = useHistory();
     const location = useLocation();
     
-    const [emailAddress, setEmailAddress] = useState(""); //Rjones123
+    const [emailAddress, setEmailAddress] = useState(""); 
     const[password, setPassword] = useState("");
     const [errors, setErrors] = useState([]);
 

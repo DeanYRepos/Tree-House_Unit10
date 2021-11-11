@@ -9,8 +9,9 @@ const CourseDetail = ()=> {
     const history = useHistory();
     const { id } = useParams();
     const  context = useContext(Context);
+    const authUser = context.authenticatedUser;
     const [CourseDetails, setCourseDetails] = useState('');
-
+    const [errors, setErrors] = useState([]);
 
     useEffect(() => {
 
@@ -23,6 +24,22 @@ const CourseDetail = ()=> {
 
     }, [context.data, history, id])
 
+    const handleDelete = () => {
+        context.data.deleteCourse(id, authUser.emailAddress, authUser.password )
+        .then(errors => {
+            if(errors.length){
+                setErrors({errors});
+            } else if (null){
+                console.log("Course was deleted successfully!");
+                history.push('/')
+            } 
+
+        }) 
+        .catch(err => {
+            console.log(err);
+            history.push('/error');
+        })
+    }
 
    
     return(
@@ -32,7 +49,7 @@ const CourseDetail = ()=> {
             <div className="actions--bar">
                 <div className="wrap">
                     <Link className="button" to={`/courses/${CourseDetails.id}/update`}>Update Course</Link> {/** Update route when updateCourse/deleteCourse components are created */}
-                    <Link className="button" to="#">Delete Course</Link>
+                    <button className="button" onClick={handleDelete} >Delete Course</button>
                     <Link className="button button-secondary" to="/">Return to List</Link>
                 </div>
             </div>

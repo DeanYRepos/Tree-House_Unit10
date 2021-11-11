@@ -5,20 +5,17 @@ import Form from './Form';
 
 const CreateCourse = () => {
 
-    const context = useContext(Context);
-    let history = useHistory();
-    const authUser = context.authenticatedUser;
-  
-      const [title, setTitle] = useState();
-      const [description, setDescription] = useState();
-      const [estimatedTime, setEstimatedTime] = useState();
-      const [materialsNeeded, setMaterialsNeeded] = useState();
-      const [userId, setUserId] = useState(context.authenticatedUser.userId);
-    
+   const context = useContext(Context);
+   let history = useHistory();
+   const authUser = context.authenticatedUser;
+   const [title, setTitle] = useState();
+   const [description, setDescription] = useState();
+   const [estimatedTime, setEstimatedTime] = useState();
+   const [materialsNeeded, setMaterialsNeeded] = useState();
+   const [userId, setUserId] = useState(context.authenticatedUser.userId);
+   const [errors, setErrors] = useState([]);
    console.log(authUser);
  
-    const [errors, setErrors] = useState([]);
-
     const change = (e) => {
       const value = e.target.value
       if (e.target.name === 'courseTitle'){
