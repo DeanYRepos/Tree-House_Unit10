@@ -19,9 +19,6 @@ const CourseDetail = ()=> {
         .then(CourseDetails => {
             setCourseDetails(CourseDetails)
             console.log(CourseDetails);
-            console.log(CourseDetails.userId);
-            console.log(authUser)
-            
           
         })
         .catch(err => history.push('./error') );
@@ -29,20 +26,27 @@ const CourseDetail = ()=> {
     }, [context.data, history, id])
     
     const handleDelete = () => {
-        context.data.deleteCourse(id, errors, authUser.emailAddress, authUser.password )
-        .then(errors => {
+        context.data.deleteCourse(id, authUser.emailAddress, authUser.password )
+        .then(response => {
+            console.log(response);
            
-            if(errors.length){
-                setErrors({errors});
-            } else {
+            if(response.status === 204){
                 console.log("Course was deleted successfully!");
-                history.push('/')
-            } 
+                history.push('/');
+                
+            } else if (response.status === 403) {
+                history.push('/error');
+            } else if (response.status === 404) {
+                history.push('/error');
+            } else if (response.status === 500) {
+                history.push('/error');
+            } else {
+                throw new Error();
+            }
 
         }) 
         .catch(err => {
             console.log(err);
-           
             history.push('/error');
         })
     };
@@ -54,9 +58,9 @@ const CourseDetail = ()=> {
             <main>
             <div className="actions--bar">
                 <div className="wrap">
-                { authUser && CourseDetails.userId === authUser.userId ? (
+                { authUser && CourseDetails.userId === authUser.userId ? ( 
                     <React.Fragment>
-                    <Link className="button" to={`/courses/${CourseDetails.id}/update`}>Update Course</Link> {/** Update route when updateCourse/deleteCourse components are created */}
+                    <Link className="button" to={`/courses/${CourseDetails.id}/update`}>Update Course</Link> {/**Removes and adds update/delete buttons based on user */}
                     <button className="button" onClick={handleDelete} >Delete Course</button>
                     <Link className="button button-secondary" to="/">Return to List</Link> 
                     </React.Fragment>
