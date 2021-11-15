@@ -12,24 +12,29 @@ const CourseDetail = ()=> {
     const authUser = context.authenticatedUser;
     const [CourseDetails, setCourseDetails] = useState('');
     const [errors, setErrors] = useState([]);
-
+   // console.log(authUser.emailAddress);
     useEffect(() => {
 
         context.data.getCourse(id)
         .then(CourseDetails => {
             setCourseDetails(CourseDetails)
             console.log(CourseDetails);
+            console.log(CourseDetails.userId);
+            console.log(authUser)
+            
+          
         })
         .catch(err => history.push('./error') );
 
     }, [context.data, history, id])
-
+    
     const handleDelete = () => {
-        context.data.deleteCourse(id, authUser.emailAddress, authUser.password )
+        context.data.deleteCourse(id, errors, authUser.emailAddress, authUser.password )
         .then(errors => {
+           
             if(errors.length){
                 setErrors({errors});
-            } else if (null){
+            } else {
                 console.log("Course was deleted successfully!");
                 history.push('/')
             } 
@@ -37,9 +42,10 @@ const CourseDetail = ()=> {
         }) 
         .catch(err => {
             console.log(err);
+           
             history.push('/error');
         })
-    }
+    };
 
    
     return(
@@ -48,9 +54,17 @@ const CourseDetail = ()=> {
             <main>
             <div className="actions--bar">
                 <div className="wrap">
+                { authUser && CourseDetails.userId === authUser.userId ? (
+                    <React.Fragment>
                     <Link className="button" to={`/courses/${CourseDetails.id}/update`}>Update Course</Link> {/** Update route when updateCourse/deleteCourse components are created */}
                     <button className="button" onClick={handleDelete} >Delete Course</button>
+                    <Link className="button button-secondary" to="/">Return to List</Link> 
+                    </React.Fragment>
+                    ) :(
                     <Link className="button button-secondary" to="/">Return to List</Link>
+                    )
+                }
+                    
                 </div>
             </div>
             <div className="wrap">
