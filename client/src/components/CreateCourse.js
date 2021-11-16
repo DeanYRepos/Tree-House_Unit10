@@ -70,19 +70,14 @@ const CreateCourse = () => {
       history.push('/');
    }
 
+  
+
     return (
         <div id="root">
           
           <main> 
             <div className="wrap">
         <h2>Create Course</h2>
-        {/* <div className="validation--errors">
-          <h3>Validation Errors</h3>
-          <ul>
-            <li>Please provide a value for "Title"</li>
-            <li>Please provide a value for "Description"</li>
-          </ul>
-        </div> */}
          <Form  
                 cancel = {cancel}
                 errors = {errors}
@@ -135,11 +130,8 @@ const CreateCourse = () => {
                     </React.Fragment>
                   
                 )} />
-       
-          {/* <button className="button" type="submit" onClick={submit}>Create Course</button><button className="button button-secondary" onClick="event.preventDefault(); location.href='index.html';">Cancel</button> */}
-      
       </div>
-      </main>
+       </main>
         </div>
     )
 

@@ -11,7 +11,7 @@ const CourseDetail = ()=> {
     const  context = useContext(Context);
     const authUser = context.authenticatedUser;
     const [CourseDetails, setCourseDetails] = useState('');
-    const [errors, setErrors] = useState([]);
+    //const [errors, setErrors] = useState([]);
    // console.log(authUser.emailAddress);
     useEffect(() => {
 
@@ -30,10 +30,10 @@ const CourseDetail = ()=> {
         .then(response => {
             console.log(response);
            
-            if(response.status === 204){
+            if([]){
                 console.log("Course was deleted successfully!");
                 history.push('/');
-                
+
             } else if (response.status === 403) {
                 history.push('/error');
             } else if (response.status === 404) {
@@ -78,7 +78,7 @@ const CourseDetail = ()=> {
                     <div>
                     <h3 className="course--detail--title">Course</h3>
                     <h4 className="course--name">{CourseDetails.title}</h4>
-                        <p> {CourseDetails.description} </p>
+                    <p> {CourseDetails.description} </p>
                     </div>
 
                     <div>

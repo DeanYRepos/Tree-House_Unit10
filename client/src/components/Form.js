@@ -27,7 +27,6 @@ const Form = (props) => {
             {elements()}
             <button className="button" type="submit">{submitButtonText}</button>
             <button className="button button-secondary" onClick={handleCancel}>Cancel</button>
-            {/* <p>Don't have a user account? Click here to <Link to="/signup">sign up</Link>!</p> */}
          </form>
       </div>
     );
@@ -39,11 +38,11 @@ function ErrorsDisplay({ errors }) {
 
   if (errors.length) {
     errorsDisplay = (
-      <div>
-        <h2 className="validation--errors--label">Validation errors</h2>
-        <div className="validation-errors">
+      <div className="validation-errors">
+        <h3 className="validation--errors--label">Validation errors</h3>
+        <div >
           <ul>
-            {errors.map((error, i) => <li key={i}>{error}</li>)}
+            {errors.map((error, i) => <li key={i}>{error} </li>)}
           </ul>
         </div>
       </div>
