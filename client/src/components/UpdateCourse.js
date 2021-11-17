@@ -59,14 +59,14 @@ const UpdateCourse = () => {
           estimatedTime,
           materialsNeeded,
           id,
-          errors
+         // errors
         
         };
        console.log(courseDetails);
         context.data.updateCourse(courseDetails, id, authUser.emailAddress, authUser.password)
         .then( errors => {
           if(errors.length) {
-            setErrors({errors});
+            setErrors(errors);
              console.log({errors});
           } else {
             console.log("Course was successfully updated!");

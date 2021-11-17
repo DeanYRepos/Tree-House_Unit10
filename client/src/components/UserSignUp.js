@@ -54,7 +54,7 @@ const UserSignUp = ()=> {
     context.data.createUser(user)
             .then(errors => {
                 if(errors.length){
-                    setErrors({errors});
+                    setErrors(errors);
                 }else {
                    context.actions.signIn(emailAddress, password)
                    .then(() => {

@@ -52,7 +52,7 @@ const CreateCourse = () => {
       .then( errors => {
         if(errors.length) {
           console.log('bad stuff');
-          setErrors({errors});
+          setErrors(errors);
         } else {
           console.log("Course was successfully created!");
           history.push('/')
