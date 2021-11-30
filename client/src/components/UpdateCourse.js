@@ -15,6 +15,7 @@ const UpdateCourse = () => {
     const [description, setDescription] = useState();
     const [estimatedTime, setEstimatedTime] = useState();
     const [materialsNeeded, setMaterialsNeeded] = useState();
+    const [userId,   ] = useState(context.authenticatedUser.userId);
     const [errors, setErrors] = useState([]);
     const [CourseDetails, setCourseDetails] = useState('');
 
@@ -58,19 +59,23 @@ const UpdateCourse = () => {
           description,
           estimatedTime,
           materialsNeeded,
-          id,
-         // errors
+          userId,
+          errors
         
         };
        console.log(courseDetails);
         context.data.updateCourse(courseDetails, id, authUser.emailAddress, authUser.password)
         .then( errors => {
+          console.log(courseDetails.title);
           if(errors.length) {
-            setErrors(errors);
-             console.log({errors});
-          } else {
+            setErrors(errors)
+          
+          } 
+           else {
             console.log("Course was successfully updated!");
+           // console.log(response);
             history.push('/')
+        
           }
         })
         .catch(err => {
@@ -107,7 +112,7 @@ const UpdateCourse = () => {
                                  onChange= { change }
                              />
 
-                                    <p>By Joe Smith</p>
+                                    <p>By {authUser.firstName} {authUser.lastName}</p>
                             <label htmlFor="courseDescription">Course Description</label>
                             <textarea 
                                 id="courseDescription"  
