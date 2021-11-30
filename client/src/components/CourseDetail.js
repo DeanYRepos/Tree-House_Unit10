@@ -21,7 +21,7 @@ const CourseDetail = ()=> {
             setCourseDetails(CourseDetails)
             console.log(CourseDetails.User);
             setUser(CourseDetails.User);
-          
+          //Use handle delete logic here, when error components are built.
         })
         .catch(err => history.push('./error') );
 
@@ -37,9 +37,9 @@ const CourseDetail = ()=> {
                 history.push('/');
 
             } else if (response.status === 403) {
-                history.push('/error');
+                history.push('/forbidden');
             } else if (response.status === 404) {
-                history.push('/error');
+                history.push('/notfound');
             } else if (response.status === 500) {
                 history.push('/error');
             } else {
