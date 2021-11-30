@@ -109,7 +109,7 @@ const UpdateCourse = () => {
                                  name="courseTitle"
                                  type="text" 
                                  defaultValue={CourseDetails.title}
-                                 onChange= { change }
+                                 onInput= { change }
                              />
 
                                     <p>By {authUser.firstName} {authUser.lastName}</p>
@@ -118,7 +118,7 @@ const UpdateCourse = () => {
                                 id="courseDescription"  
                                 name="courseDescription" 
                                 defaultValue= {CourseDetails.description}
-                                onChange= { change }    
+                                onInput= { change }    
                                 />
                              </div>
                          <div>

@@ -48,7 +48,7 @@ const CourseDetail = ()=> {
         .catch(err => {
             console.log(err);
             history.push('/error');
-        });
+        })
     };
 
    
@@ -78,6 +78,7 @@ const CourseDetail = ()=> {
                     <div>
                     <h3 className="course--detail--title">Course</h3>
                     <h4 className="course--name">{CourseDetails.title}</h4>
+                    <p> By {authUser.firstName} {authUser.lastName}</p>
                     <p> {CourseDetails.description} </p>
                     </div>
 

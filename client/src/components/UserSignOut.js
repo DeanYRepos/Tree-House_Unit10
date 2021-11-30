@@ -7,4 +7,4 @@ export default ({context}) => {
   return (
     <Redirect to="/" />
   );
-}
+} 
