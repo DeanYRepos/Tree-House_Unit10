@@ -11,6 +11,7 @@ const CourseDetail = ()=> {
     const  context = useContext(Context);
     const authUser = context.authenticatedUser;
     const [CourseDetails, setCourseDetails] = useState('');
+    const [User, setUser] = useState('');
     //const [errors, setErrors] = useState([]);
    // console.log(authUser.emailAddress);
     useEffect(() => {
@@ -18,7 +19,8 @@ const CourseDetail = ()=> {
         context.data.getCourse(id)
         .then(CourseDetails => {
             setCourseDetails(CourseDetails)
-            console.log(CourseDetails);
+            console.log(CourseDetails.User);
+            setUser(CourseDetails.User);
           
         })
         .catch(err => history.push('./error') );
@@ -78,7 +80,7 @@ const CourseDetail = ()=> {
                     <div>
                     <h3 className="course--detail--title">Course</h3>
                     <h4 className="course--name">{CourseDetails.title}</h4>
-                    <p> By {authUser.firstName} {authUser.lastName}</p>
+                    <p> By {User.firstName} {User.lastName}</p>
                     <p> {CourseDetails.description} </p>
                     </div>
 
