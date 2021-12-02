@@ -50,7 +50,7 @@ const Course = db.Course;
     } else {
         const err = new Error();
         err.status = 404;
-        err.message = 'Course not found';
+        err.message = 'Course not found!';
         next(err);
     }
     

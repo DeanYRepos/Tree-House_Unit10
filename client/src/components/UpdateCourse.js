@@ -42,6 +42,7 @@ const UpdateCourse = () => {
             
             history.push('/notfound')
           } 
+        
         })
         .catch(err => history.push('/error') );
 
@@ -87,7 +88,6 @@ const UpdateCourse = () => {
           } 
            else {
             console.log("Course was successfully updated!");
-           // console.log(response);
             history.push('/')
         
           }

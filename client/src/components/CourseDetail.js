@@ -12,9 +12,9 @@ const CourseDetail = ()=> {
     const authUser = context.authenticatedUser;
     const [CourseDetails, setCourseDetails] = useState('');
     const [User, setUser] = useState('');
-   // let location = useLocation();
+  
     useEffect(() => {
-       // const controller = new AbortController();
+      
       
         context.data.getCourse(id)
         .then(CourseDetails => {
@@ -34,9 +34,9 @@ const CourseDetail = ()=> {
  
     }, [context.data, history, id])
     
-    const handleDelete = () => {
-        context.data.deleteCourse(id, authUser.emailAddress, authUser.password )
-        .then(response => {
+        const handleDelete = () => {
+         context.data.deleteCourse(id, authUser.emailAddress, authUser.password )
+         .then(response => {
             console.log(response);
            
             if([]){
