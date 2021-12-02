@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Error = () => {
+const UnhandledError = () => {
 
 
     return (
@@ -14,4 +14,4 @@ const Error = () => {
     )
 }
 
-export default Error; 
+export default UnhandledError; 

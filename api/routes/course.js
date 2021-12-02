@@ -29,7 +29,7 @@ const Course = db.Course;
        
   }));
   //Get route returns single course with authenticated user
-  router.get('/courses/:id', asyncHandler(async(req, res) => {
+  router.get('/courses/:id', asyncHandler(async(req, res, next) => {
     const course = await Course.findByPk(req.params.id,{
       attributes: {
         exclude: ['password','createdAt', 'updatedAt']
@@ -48,7 +48,10 @@ const Course = db.Course;
       res.status(200).json(course);
       console.log(course);
     } else {
-        res.status(404);
+        const err = new Error();
+        err.status = 404;
+        err.message = 'Course not found';
+        next(err);
     }
     
   }));

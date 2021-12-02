@@ -1,5 +1,5 @@
 import React, {  useState, useEffect, useContext } from 'react';
-import { Link, useParams, useHistory, useLocation, Redirect } from 'react-router-dom';
+import { Link, useParams, useHistory} from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import  { Context }  from '../Context';
 
@@ -12,7 +12,7 @@ const CourseDetail = ()=> {
     const authUser = context.authenticatedUser;
     const [CourseDetails, setCourseDetails] = useState('');
     const [User, setUser] = useState('');
-    let location = useLocation();
+   // let location = useLocation();
     useEffect(() => {
        // const controller = new AbortController();
       
@@ -25,12 +25,14 @@ const CourseDetail = ()=> {
                 setUser(CourseDetails.User);
                 
             } else {
-                <Redirect from={location} to='./notfound'/>
+                
+              history.push('/notfound');
+                
             }
         })
-        .catch(err => history.push('./error') );
+        .catch(err => history.push('/error') );
  
-    }, [context.data, history, id, location])
+    }, [context.data, history, id])
     
     const handleDelete = () => {
         context.data.deleteCourse(id, authUser.emailAddress, authUser.password )
