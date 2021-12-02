@@ -26,12 +26,26 @@ const UpdateCourse = () => {
 
         context.data.getCourse(id)
         .then(CourseDetails => {
-            setCourseDetails(CourseDetails)
-          
-        })
-        .catch(err => history.push('./error') );
+          console.log(CourseDetails.userId);
+          console.log(authUser.userId)
+          console.log(CourseDetails.status)
+          if (authUser.userId !== CourseDetails.userId) {
 
-    }, [context.data, history, id])
+            history.push('/forbidden');
+          
+          }
+            else if(CourseDetails.id){
+            
+            setCourseDetails(CourseDetails)
+       
+          } else  {
+            
+            history.push('/notfound')
+          } 
+        })
+        .catch(err => history.push('/error') );
+
+    }, [context.data, history, id, authUser.userId])
    
     const change = (e) => {
       const value = e.target.value
