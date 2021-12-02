@@ -1,5 +1,5 @@
 import React, {  useState, useEffect, useContext } from 'react';
-import { Link, useParams, useHistory } from 'react-router-dom';
+import { Link, useParams, useHistory, useLocation, Redirect } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import  { Context }  from '../Context';
 
@@ -12,20 +12,25 @@ const CourseDetail = ()=> {
     const authUser = context.authenticatedUser;
     const [CourseDetails, setCourseDetails] = useState('');
     const [User, setUser] = useState('');
-    //const [errors, setErrors] = useState([]);
-   // console.log(authUser.emailAddress);
+    let location = useLocation();
     useEffect(() => {
-
+       // const controller = new AbortController();
+      
         context.data.getCourse(id)
         .then(CourseDetails => {
-            setCourseDetails(CourseDetails)
-            console.log(CourseDetails.User);
-            setUser(CourseDetails.User);
-          //Use handle delete logic here, when error components are built.
+            if(CourseDetails.id) {
+                console.log(CourseDetails);
+                setCourseDetails(CourseDetails)
+                console.log(CourseDetails.User);
+                setUser(CourseDetails.User);
+                
+            } else {
+                <Redirect from={location} to='./notfound'/>
+            }
         })
         .catch(err => history.push('./error') );
-
-    }, [context.data, history, id])
+ 
+    }, [context.data, history, id, location])
     
     const handleDelete = () => {
         context.data.deleteCourse(id, authUser.emailAddress, authUser.password )

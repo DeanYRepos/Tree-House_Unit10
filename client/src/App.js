@@ -15,7 +15,7 @@ import UserSignOut from './components/UserSignOut'
 import UpdateCourse from './components/UpdateCourse';
 import Header from './components/Header';
 import PrivateRoute from './PrivateRoute';
-import Error from './components/Error';
+import UnhandledError from './components/UnhandledError';
 import NotFound from './components/NotFound';
 import Forbidden from './components/Forbidden';
 import withContext from './Context';
@@ -28,9 +28,9 @@ const UserSignUpWithContext = withContext(UserSignUp)
 const UserSignInWithContext = withContext(UserSignIn);
 const UserSignOutWithContext = withContext(UserSignOut);
 const UpdateCourseWithContext = withContext(UpdateCourse);
-const ErrorWithContext = withContext(Error);
-const NotFoundWithContext = withContext(NotFound);
-const ForbiddenWithContext = withContext(Forbidden);
+// const ErrorWithContext = withContext(Error);
+// const NotFoundWithContext = withContext(NotFound);
+// const ForbiddenWithContext = withContext(Forbidden);
 
 class App extends Component {
 
@@ -49,9 +49,9 @@ class App extends Component {
          <Route path='/signin' component={UserSignInWithContext}/>
          <Route path='/signup' component={UserSignUpWithContext}/>
          <Route path='/signout' component={UserSignOutWithContext}/>
-         <Route path='/error' component={ErrorWithContext}/>
-         <Route path='/notfound' component={NotFoundWithContext} />
-         <Route path='/forbidden' component={ForbiddenWithContext}/>
+         <Route component={NotFound} />
+         <Route path='/forbidden' component={Forbidden}/>
+         <Route path='/error' component={UnhandledError}/>
        </Switch>
      </div>
       </Router>
