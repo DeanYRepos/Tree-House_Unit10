@@ -4,6 +4,7 @@ import {
   BrowserRouter as Router,
   Route,
   Switch,
+  Redirect
 } from 'react-router-dom';
 
 import Courses from './components/Courses';
@@ -22,16 +23,12 @@ import withContext from './Context';
 
 
 const HeaderWithContext = withContext(Header);
-const CoursesWithContext = withContext(Courses);
 const CourseDetailWithContext = withContext(CourseDetail);
 const CreateCourseWithContext = withContext(CreateCourse);
 const UserSignUpWithContext = withContext(UserSignUp)
 const UserSignInWithContext = withContext(UserSignIn);
 const UserSignOutWithContext = withContext(UserSignOut);
 const UpdateCourseWithContext = withContext(UpdateCourse);
-// const ErrorWithContext = withContext(Error);
-// const NotFoundWithContext = withContext(NotFound);
-// const ForbiddenWithContext = withContext(Forbidden);
 
 class App extends Component {
 
@@ -43,7 +40,8 @@ class App extends Component {
      <div>   
       <HeaderWithContext/>
        <Switch>
-         <Route exact path='/' component={CoursesWithContext}/>
+         <Route exact path='/' render= {() => <Redirect to= '/courses'/>}  />
+         <Route exact path='/courses' render={() => <Courses/>}/>
          <PrivateRoute path='/courses/create' component={ CreateCourseWithContext} />
          <PrivateRoute path= '/courses/:id/update' component={ UpdateCourseWithContext} />
          <Route path='/courses/:id' component={CourseDetailWithContext}/>
