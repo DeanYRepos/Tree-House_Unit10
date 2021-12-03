@@ -18,7 +18,8 @@ const UpdateCourse = () => {
     const [userId,   ] = useState(context.authenticatedUser.userId);
     const [errors, setErrors] = useState([]);
     const [CourseDetails, setCourseDetails] = useState('');
-
+    
+  
 
      
      
@@ -26,27 +27,32 @@ const UpdateCourse = () => {
 
         context.data.getCourse(id)
         .then(CourseDetails => {
-          console.log(CourseDetails.userId);
-          console.log(authUser.userId)
-          console.log(CourseDetails.status)
-          if (authUser.userId !== CourseDetails.userId) {
-
-            history.push('/forbidden');
+         // console.log(CourseDetails.userId);
+         // console.log(response.status);
+         // console.log(CourseDetails.userId)
+         if(!CourseDetails.id) {
           
-          }
-            else if(CourseDetails.id){
-            
-            setCourseDetails(CourseDetails)
+          history.push('/notfound')
+        } 
+
+         else if (authUser.userId !== CourseDetails.userId) {
+
+          history.push('/forbidden');
+        
+        }
        
-          } else  {
-            
-            history.push('/notfound')
-          } 
+          else {
+          
+          setCourseDetails(CourseDetails)
+     
+        } 
+        
+        
         
         })
         .catch(err => history.push('/error') );
 
-    }, [context.data, history, id, authUser.userId])
+    }, [context.data, history, id, authUser.id, authUser.userId, userId ])
    
     const change = (e) => {
       const value = e.target.value
@@ -100,7 +106,7 @@ const UpdateCourse = () => {
       }
       
       const cancel = () =>{
-        history.push('/');
+        history.push(`/courses/${CourseDetails.id}`);
      }
 
     return(
