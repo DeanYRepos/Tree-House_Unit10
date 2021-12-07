@@ -4,7 +4,7 @@ import { useHistory, useParams } from 'react-router-dom';
 import Form from './Form';
 
 
-
+// Stateful function component that updates values and state of courses
 const UpdateCourse = () => {
 
     const context = useContext(Context);
@@ -22,7 +22,7 @@ const UpdateCourse = () => {
   
 
      
-     
+     // side effect hook calls and sets state of course details and handles errors routes
     useEffect(() => {
 
         context.data.getCourse(id)
@@ -54,6 +54,7 @@ const UpdateCourse = () => {
 
     }, [context.data, history, id, authUser.id, authUser.userId, userId ])
    
+    // Change function that updates elements values on change event
     const change = (e) => {
       const value = e.target.value
       if (e.target.name === 'courseTitle'){
@@ -72,7 +73,7 @@ const UpdateCourse = () => {
           return;
         }
     }
-   
+      // Submit function that updates course associated with authenticated user and handles errors redirects 
       const submit = () => {
 
         const courseDetails = {
@@ -104,7 +105,7 @@ const UpdateCourse = () => {
         });
        
       }
-      
+      // Cancel function routes back to course detail component when button is clicked
       const cancel = () =>{
         history.push(`/courses/${CourseDetails.id}`);
      }

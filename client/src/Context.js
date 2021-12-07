@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import Cookies from 'js-cookie';
-import Data from './Data';
+import Data from './Data'; //import data from helper functions 
 
 export const Context = React.createContext(); 
-
+// Context class component 
 export class Provider extends Component {
 
+  // initializes instance of data, cookie, and authenticated user data 
   constructor() {
     super();
     this.data = new Data();
@@ -38,7 +39,7 @@ export class Provider extends Component {
     );
   }
 
-  
+  // signIn() method that returns authenticated users data from API upon submitting, persists user's data with cookies
   signIn = async (emailAddress, password) => {
     const user = await this.data.getUser(emailAddress, password);
     
@@ -59,6 +60,7 @@ export class Provider extends Component {
     return user;
   }
 
+  // method that removes authenticated users data from global state and redirects to main courses screen
   signOut = () => {
     this.setState({ authenticatedUser: null });
     Cookies.remove('authenticatedUser');

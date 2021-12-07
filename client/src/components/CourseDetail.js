@@ -3,17 +3,18 @@ import { Link, useParams, useHistory} from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import  { Context }  from '../Context';
 
-
+//// Stateful function component to retrieve course details from Api, displays update and delete buttons 
 const CourseDetail = ()=> {
 
     const history = useHistory();
     const { id } = useParams();
-    const  context = useContext(Context);
+    const  context = useContext(Context);  
     const authUser = context.authenticatedUser;
     const [CourseDetails, setCourseDetails] = useState('');
     const [User, setUser] = useState('');
   
-    useEffect(() => {
+    //side effect hook to call and update state of each course
+    useEffect(() => { 
       
       
         context.data.getCourse(id)
@@ -33,7 +34,8 @@ const CourseDetail = ()=> {
         .catch(err => history.push('/error') );
  
     }, [context.data, history, id])
-    
+       
+        //calls and handles delete function 
         const handleDelete = () => {
          context.data.deleteCourse(id, authUser.emailAddress, authUser.password )
          .then(response => {

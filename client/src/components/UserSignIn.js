@@ -3,6 +3,7 @@ import { Link, useHistory, useLocation } from 'react-router-dom';
 import Form from './Form'
 import  { Context }  from '../Context';
 
+// Stateful function component calls user data from Api and renders sign in screen
 const UserSignIn = () => {
     const context = useContext(Context);
     let history = useHistory();
@@ -11,7 +12,8 @@ const UserSignIn = () => {
     const [emailAddress, setEmailAddress] = useState(""); 
     const[password, setPassword] = useState("");
     const [errors, setErrors] = useState([]);
-
+   
+    // Change function that updates elements values on change event
     const change = (e) =>{
      
       const value = e.target.value;
@@ -27,7 +29,8 @@ const UserSignIn = () => {
         }
 
     }
- 
+    
+    // Submit function that calls data for authenticated users from API 
     const submit = () => {
       const { from } = location.state || {from: { pathname: '/'}};
 
@@ -47,6 +50,8 @@ const UserSignIn = () => {
         history.push('/error');
       })
     }
+
+     // Cancel function routes back to main courses screen when button is clicked
     const cancel = () =>{
       history.push('/');
    }

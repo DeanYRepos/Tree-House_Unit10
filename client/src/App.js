@@ -6,7 +6,7 @@ import {
   Switch,
   Redirect
 } from 'react-router-dom';
-
+// IMPORTED COMPONENTS
 import Courses from './components/Courses';
 import CourseDetail from './components/CourseDetail'; 
 import CreateCourse from './components/CreateCourse';
@@ -21,7 +21,7 @@ import NotFound from './components/NotFound';
 import Forbidden from './components/Forbidden';
 import withContext from './Context';
 
-
+// setting up components with context 
 const HeaderWithContext = withContext(Header);
 const CourseDetailWithContext = withContext(CourseDetail);
 const CreateCourseWithContext = withContext(CreateCourse);
@@ -32,7 +32,7 @@ const UpdateCourseWithContext = withContext(UpdateCourse);
 
 class App extends Component {
 
-  
+  //Component Routes 
   render(){
    
     return (

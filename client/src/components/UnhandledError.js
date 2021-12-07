@@ -1,5 +1,6 @@
 import React from 'react';
 
+// Stateless function component, displays a message letting the user know that an unexpected error has occurred.
 const UnhandledError = () => {
 
 

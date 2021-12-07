@@ -1,7 +1,8 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { Consumer } from './Context';
-
+// Higher order component (HOC), configures protected routes that need authenticated user credentials (updateCourse, createCourse)
+//Redirects to /signIn 
 const PrivateRoute = ({component: Component, ...rest}) => {
    
     return (

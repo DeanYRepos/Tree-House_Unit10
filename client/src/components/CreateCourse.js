@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import  { Context }  from '../Context';
 import Form from './Form';
 
+// Stateful function component that creates and adds new course data  
 const CreateCourse = () => {
 
    const context = useContext(Context);
@@ -15,7 +16,8 @@ const CreateCourse = () => {
    const [userId,   ] = useState(context.authenticatedUser.userId);
    const [errors, setErrors] = useState([]);
    console.log(authUser);
- 
+
+    // Change function that updates elements values on change event
     const change = (e) => {
       const value = e.target.value
       if (e.target.name === 'courseTitle'){
@@ -35,6 +37,7 @@ const CreateCourse = () => {
         }
     }
 
+    // Submit function that creates new course associated with authenticated user
     const submit = () => {
 
       const courseDetails = {
@@ -66,6 +69,7 @@ const CreateCourse = () => {
      
     }
     
+    // Cancel function routes back to main page when button is clicked
     const cancel = () =>{
       history.push('/');
    }

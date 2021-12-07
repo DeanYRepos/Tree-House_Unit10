@@ -1,6 +1,6 @@
 import React from 'react';
 
-
+// Stateless Form function component, renders validation errors and receives values from CreateCourse/UpdateCourse Components 
 const Form = (props) => {
 
     const {
@@ -10,7 +10,7 @@ const Form = (props) => {
         submitButtonText,
         elements,
         } = props
-
+    
     function handleSubmit(event) {
         event.preventDefault();
         submit();
@@ -35,6 +35,7 @@ const Form = (props) => {
 
   
 }
+// Displays validation errors 
 function ErrorsDisplay({ errors }) {
   let errorsDisplay = null;
 

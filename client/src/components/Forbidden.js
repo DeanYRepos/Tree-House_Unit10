@@ -1,5 +1,5 @@
 import React from 'react';
-
+// Stateless function component displays when course user id doesn't match authenticated user id
 const Forbidden = () => {
 
     return (

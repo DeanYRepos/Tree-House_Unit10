@@ -4,7 +4,7 @@ import Form from './Form';
 import { Context } from '../Context';
 
 
-
+// Stateful function component that creates and adds user data 
 const UserSignUp = ()=> {
     let history = useHistory();
     const context = useContext(Context);
@@ -18,6 +18,7 @@ const UserSignUp = ()=> {
     const [confirmPassword, setConfirmPassword] = useState();
     const [errors, setErrors] = useState([]);
 
+    // Change function that updates elements values on change event
     const change = (e) =>{
         const value = e.target.value;
         if (e.target.name === 'firstName') {
@@ -40,7 +41,7 @@ const UserSignUp = ()=> {
           }
     }
 
-    
+     // Submit function that creates new authenticated user 
      const submit = () =>{
  
         const user =     {  
@@ -68,7 +69,8 @@ const UserSignUp = ()=> {
             history.push('/error')
          });
       }
-
+   
+    // Cancel function routes back to main page when button is clicked
     const cancel = () =>{
        history.push('/');
     }

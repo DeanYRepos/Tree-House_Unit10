@@ -1,11 +1,11 @@
-import React, {  useState, useEffect, useContext } from 'react'; //don't forget to replace Component into curly braces if useState doesn't work out
+import React, {  useState, useEffect, useContext } from 'react'; 
 import { Link, useHistory } from 'react-router-dom';
 import  { Context }  from '../Context';
 
 
 
 
-
+    // Stateful function component to retrieve list of courses from Api 
   const Courses = () => {
     const  context = useContext(Context);
     const history = useHistory();
@@ -13,6 +13,7 @@ import  { Context }  from '../Context';
     
     console.log(context.authenticatedUser);
    
+    // side effect hook that calls and updates state of list of courses
     useEffect(() => {
         
         context.data.getCourses()

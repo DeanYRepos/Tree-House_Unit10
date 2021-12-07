@@ -1,10 +1,12 @@
 import config from './config';
 
 let id= [];
+// Data class holds helper functions that make api requests 
 export default class Data {
   api(path, method= 'GET', body = null, requiresAuth = false, credentials = null) {
     const url = config.apiBaseUrl + path;
   
+    // Options object sends requests with HTTP method, request headers and stringified body 
     const options = {
       method,
       headers: {
@@ -15,13 +17,18 @@ export default class Data {
     if (body !== null) {
       options.body = JSON.stringify(body);
     }
+    
     if(requiresAuth){
+        // The btoa() method creates a base-64 encoded ASCII string from a "string" of data. 
+      // We'll use btoa() to encode the user ID (in this case emailAddress) and password credentials passed to the api() 
+      // method. The credentials will be passed as an object containing emailAddress and password 
       const encodedCredentials = btoa(`${credentials.emailAddress }:${credentials.password}`);
       options.headers['Authorization'] = `Basic ${encodedCredentials}`;
     }
     return fetch(url, options);
   }
 
+  // getUser helper function, retrieves user data from API 
   async getUser(emailAddress, password) {
     const response = await this.api(`/users`, 'GET', null, true, {emailAddress, password});
     if (response.status === 200) {
@@ -36,6 +43,7 @@ export default class Data {
     }
   }
   
+  // createUser helper function, posts new user data 
   async createUser(user) {
     const response = await this.api('/users', 'POST', user);
     if (response.status === 201) {
@@ -51,7 +59,7 @@ export default class Data {
     }
   }
 
- // Courses helper functions
+ // Courses helper function, retrieves courses data from API 
 
  async getCourses () {
     const response = await this.api('/courses', 'GET', null)
@@ -66,6 +74,7 @@ export default class Data {
     }
  }
 
+ // getCourse helper function, retrieves individual course data from API 
  async getCourse (id) {
     const response = await this.api(`/courses/${id}`, 'GET', null)
     if(response.status === 200) {
@@ -77,6 +86,7 @@ export default class Data {
     }
  }
 
+ // createCourse helper function, posts new course data 
  async createCourse (course, emailAddress, password) {
     const response = await this.api(`/courses/${id}`, 'POST',course, true, { emailAddress, password })
     if(response.status === 201) {
@@ -90,6 +100,7 @@ export default class Data {
     }
  }
 
+ // update helper function, updates course data to API 
  async updateCourse (course, id, emailAddress, password){
     const response = await this.api(`/courses/${id}`, 'PUT', course, true, { emailAddress, password })
     if(response.status === 204){
@@ -104,7 +115,7 @@ export default class Data {
     }
 
  }
-  // create delete course helper 
+  // delete helper function, deletes course
 
   async deleteCourse ( id, emailAddress, password) {
     const response = await this.api(`/courses/${id}`, 'DELETE',null, true, { emailAddress, password })
