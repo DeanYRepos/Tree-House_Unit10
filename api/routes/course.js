@@ -25,7 +25,14 @@ const Course = db.Course;
           }
         ],
       });
+      if(courses){
        res.status(200).json(courses);
+      } else {
+        const err = new Error();
+        err.status = 404;
+        err.message = 'Course not found!';
+        next(err);
+      }
        
   }));
   //Get route returns single course with authenticated user
@@ -107,6 +114,7 @@ const Course = db.Course;
     if(course.userId === user){
       await course.destroy();
       res.status(204).end();
+      
     } else{
       res.status(403).json({message: "Course not found"});
     }
