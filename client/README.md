@@ -1,5 +1,5 @@
 Tree-House_Unit10
-Final Techdegree Project: Full Stack App with React and REST API
+Final Tech degree Project: Full Stack App with React and REST API
 
 Project Overview:
  I used React to create a client side for an existing school database REST API (that was created in a previous project). This full stack application will provide a way for users to administer a school database containing information about courses. Users will be able to call from a database, retrieving a list of courses, details from those courses, as well as being able to create, update and delete said courses in the database.

@@ -8,12 +8,10 @@ const user = require('./routes/user');
 const course = require('./routes/course');
 const cors = require('cors');
 const app = express();
+const PORT = 5000;
 
 app.use(cors());
 
-// app.listen(3000, () => {
-//   console.log('Listening on port 3000!')
-// })
 
 (async() => {
   try{
@@ -72,9 +70,9 @@ app.use((err, req, res, next) => {
 });
 
 // set our port
-app.set('port', process.env.PORT || 5000);
+//app.set('PORT', process.env.PORT || 5000);
 
 // start listening on our port
-const server = app.listen(app.get('port'), () => {
-  console.log(`Express server is listening on port ${server.address().port}`);
+const server = app.listen(process.env.PORT || PORT, () => {
+  console.log(`Express server is listening on port ${server.address().PORT}`);
 });

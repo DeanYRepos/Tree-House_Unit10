@@ -16,11 +16,11 @@
     "storage":  "fsjstd-restapi.db" 
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
+    "username": "bda641a3b31b59",
+    "password": "9535a59a",
+    "database": "heroku_b4f0f87e726890a",
+    "host": "us-cdbr-east-05.cleardb.net",
     "dialect": "mysql",
-    "storage":  "fsjstd-restapi.db" 
+    "storage":  "fsjstd-restapi.db.sql" 
   }
 }
