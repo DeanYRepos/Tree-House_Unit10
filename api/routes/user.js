@@ -20,6 +20,8 @@ const User = db.User;
       password: user.password,
       userId: user.id,
 
+      status: 200
+
 
      });
     

@@ -11,11 +11,11 @@ const UserSignUp = ()=> {
 
     
    
-    const [firstName, setFirstName] = useState();
-    const [lastName, setLastName] = useState();
-    const [emailAddress, setEmailAddress] = useState();
-    const [password, setPassword] = useState();
-    const [confirmPassword, setConfirmPassword] = useState();
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const [emailAddress, setEmailAddress] = useState("");
+    const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
     const [errors, setErrors] = useState([]);
 
     // Change function that updates elements values on change event

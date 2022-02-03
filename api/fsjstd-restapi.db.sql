@@ -1,23 +1,22 @@
-START TRANSACTION;
 CREATE TABLE IF NOT EXISTS Users ( 
-  `id` integer AUTO_INCREMENT, 
+  `id` INTEGER AUTO_INCREMENT, 
  `firstname` varchar(255) NOT NULL DEFAULT '',
  `lastname` varchar(255) NOT NULL DEFAULT '', 
  `emailaddress` varchar(255) NOT NULL DEFAULT '' UNIQUE, 
  `password` varchar(255) NOT NULL DEFAULT '', 
- `created_at` timestamp NOT NULL, 
- `updated_at` timestamp NOT NULL,
+ `created_at` DATETIME NOT NULL, 
+ `updated_at` DATETIME NOT NULL,
   PRIMARY KEY  (`id`) );
-
-CREATE TABLE IF NOT EXISTS Courses (
-	`id`	INTEGER AUTO_INCREMENT,
+  
+  CREATE TABLE IF NOT EXISTS Courses (
+	`id` INTEGER AUTO_INCREMENT,
 	`title`	VARCHAR(255) NOT NULL DEFAULT '',
-	`description`	TEXT NOT NULL DEFAULT '',
-	`estimatedTime`	VARCHAR(255),
-	`materialsNeeded`	VARCHAR(255),
-	`createdAt`	DATETIME NOT NULL,
-	`updatedAt`	DATETIME NOT NULL,
-	`userId`	INTEGER NOT NULL DEFAULT -1,
+	`description` TEXT NOT NULL DEFAULT '',
+	`estimatedTime` VARCHAR(255),
+	`materialsNeeded` VARCHAR(255),
+	`created_at` DATETIME NOT NULL,
+	`updated_at` DATETIME NOT NULL,
+	`userId` INTEGER NOT NULL DEFAULT -1,
 	PRIMARY KEY(`id` ),
 	FOREIGN KEY(`userId`) REFERENCES `Users`(`id`) ON DELETE CASCADE ON UPDATE CASCADE
 );
@@ -39,7 +38,7 @@ The specifications that follow will produce a bookcase with overall dimensions o
 * 1 x 2 common pine
 * 1 x 4 common pine
 * 1 x 10 common pine
-* 1/4 inch thick lauan plywood
+* 1/4 inch thick lauan plywoodcourses
 * Finishing Nails
 * Sandpaper
 * Wood Glue

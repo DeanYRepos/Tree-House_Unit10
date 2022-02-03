@@ -12,6 +12,24 @@ const PORT = 5000;
 
 app.use(cors());
 
+// app.use(function(req, res, next) {  //stack over flow
+//   res.header("Access-Control-Allow-Origin", CLIENT_ORIGIN);
+//   res.header(
+//     "Access-Control-Allow-Headers",
+//     "Origin, X-Requested-With, Content-Type, Accept"
+//   );
+//   res.header("Access-Control-Allow-Methods", "GET,POST,PUT,PATCH,DELETE");
+//   res.header("Access-Control-Allow-Credentials", true);
+//   if (req.method === "OPTIONS") {
+//     return res.sendStatus(204);
+//   }
+//   next();
+// });
+
+// fetch(`${API_BASE_URL}/dept/get/`, {
+//   method: 'GET',
+//   credentials: 'include',   
+// })
 
 (async() => {
   try{
@@ -69,26 +87,9 @@ app.use((err, req, res, next) => {
   }}
 });
 
-// app.use((req, res, next) => {
-//   res.header('Access-Control-Allow-Origin', '*');
-//   next();
-// });
 
-// app.get('/jokes/random', (req, res) => {
-//   request(
-//     { url: 'https://joke-api-strict-cors.appspot.com/jokes/random' },
-//     (error, response, body) => {
-//       if (error || response.statusCode !== 200) {
-//         return res.status(500).json({ type: 'error', message: err.message });
-//       }
 
-//       res.json(JSON.parse(body));
-//     }
-//   )
-// });
 
-// set our port
-//app.set('PORT', process.env.PORT || 5000);
 
 // start listening on our port
 const server = app.listen(process.env.PORT || PORT, () => {

@@ -22,8 +22,9 @@ export default class Data {
         // The btoa() method creates a base-64 encoded ASCII string from a "string" of data. 
       // We'll use btoa() to encode the user ID (in this case emailAddress) and password credentials passed to the api() 
       // method. The credentials will be passed as an object containing emailAddress and password 
-      const encodedCredentials = btoa(`${credentials.emailAddress }:${credentials.password}`);
-      options.headers['Authorization'] = `Basic ${encodedCredentials}`;
+      
+          const encodedCredentials = Buffer.from(`${credentials.emailAddress }:${credentials.password}`).toString('base64');
+          options.headers['Authorization'] = `Basic ${encodedCredentials}`;
     }
     return fetch(url, options);
   }

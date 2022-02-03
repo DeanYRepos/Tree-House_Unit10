@@ -72,7 +72,16 @@ module.exports = (sequelize) => {
                     msg:'please provide a password'
                 }
             }
+        },
+        createdAt: {
+            field: 'created_at',
+            type: DataTypes.DATE,
+        },
+        updatedAt: {
+            field: 'updated_at',
+            type: DataTypes.DATE,
         }
+       
     }, {
        
         sequelize 
